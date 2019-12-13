@@ -1,26 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import './App.scss';
 
-import './App.css';
+class App extends Component {
+  render() {
+    const header = (
+      <div className="header-card">
+        <img className="img" alt="mono"></img>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
+        <div className="name-card">
+          <h2 className="name-title">Alex Guerrero</h2>
+          <h4 className="name-date">Lunes, 26 de junio de 2017</h4>
+        </div>
+      </div>
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    )
+    return header
+  }
+
 }
-
 export default App;
