@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Header from './components/header'
-import AppFooter from './components/footer'
+import Header from './components/header';
+import CardPreview from './components/cardpreview';
+import AppFooter from './components/footer';
 
 
 import './App.scss';
@@ -12,6 +13,7 @@ class App extends Component {
     return (
       <div className="Main">
         <Header></Header>
+        <CardPreview></CardPreview>
         <AppFooter></AppFooter>
       </div>
     )

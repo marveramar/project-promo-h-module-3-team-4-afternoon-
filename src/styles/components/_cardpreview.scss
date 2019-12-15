@@ -1,0 +1,134 @@
+.hidden{
+    display: none; 
+}
+.opacity {
+    opacity: 0.6;
+}
+.main{
+    background-image: linear-gradient(to bottom, #f5f5f5, $white-full 9%);
+    height: 80%;
+}
+.errorEmail {
+	font-size: rem(14);
+	color: red;
+	text-align: center;
+	margin-bottom: rem(10);
+}
+
+.preview{
+    background: url('../../images/leavesBackground.jpg') no-repeat;
+    background-size: cover;
+    height: 80vh;
+    //overflow: hidden;
+    border-bottom: 3px solid $dark-green-blue;
+    border-top: 3px solid $dark-green-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+       
+        
+    &_card-container{
+        height: 400px;
+        width: 270px;
+        border-radius: 8px;
+        background-color: $dark-green-blue-transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+    .reset{
+        width: 75px;
+        height: 30px;
+        margin-top: 40px;
+        align-self: center;
+        transform: translateX(-85px);
+        border: solid 1px $white-full;
+        border-radius: 15px;
+        background-color: $silver;
+        font-family: $openSans-font;
+        font-size: 0.75rem;
+        line-height: 20px;
+        color: $gunmetal;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        &:hover {
+            border: solid 2px $dark-green-blue;
+            color: $dark-green-blue;
+            box-shadow: 0 0 25px $white-full;
+        }
+    }
+    
+    &_card{
+        margin: 20px 30px 40px 30px;
+        background-color: $white-full;
+        width: 240px;
+        height: 329px;
+
+        &-head{
+            margin-top: 23px;
+            margin-bottom: 10px;
+            border-left: 5px solid $dirty-blue;
+        }
+
+        &-name{
+            text-transform: capitalize;
+            font-family: $montserrat-font;
+            font-weight: $bold-weight;
+            font-size: 1.125rem;
+            line-height: 20px;
+            color: $dark-green-blue;
+            padding-left: 20px;
+            margin-top: 0px;
+            margin-bottom: 2px;
+        }
+        
+        &-job{
+            font-family: $montserrat-font;
+            font-weight: $regular-weight;
+            font-size: 1rem;
+            line-height: 20px;
+            color: $gunmetal;
+            padding-left: 20px;
+            margin-top: 2px;
+            margin-bottom: 0px;
+        }
+        &-image {
+            background: url('../../images/portrait.jpg') top center no-repeat;
+            background-size: cover;
+            width: 240px;
+            height: 200px;
+        }
+        &-social{
+            display: flex;
+            flex-direction: row;
+            align-content: flex-start;
+            justify-content: center;
+            height: 50px;
+            padding-right: 62px;
+            padding-left: 20px;
+            margin-top: 7px;
+
+            .item{
+                height: 32px;
+
+                &_btn{
+                    border: solid 2px $hospital-green;
+                    border-radius: 50%;
+                    width: 32px;
+                    height: 32px;
+                    margin: 0px 5px 15px 5px;
+                    color: $dark-green-blue;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+}
