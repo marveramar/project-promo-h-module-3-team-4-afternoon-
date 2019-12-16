@@ -1,0 +1,73 @@
+.color, .fonts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &_title{
+        @include text-open-14;
+        color: $gunmetal;
+    }
+}
+.color_theme{
+    display: inline-flex;
+    .item{
+        width: 30px;
+        height: 25px;
+        display: inline-block;
+    }
+}
+.palette-container{
+    padding-bottom: 10px;
+}
+.font_families{
+    display: flex;
+    flex-direction: column; 
+}
+.font-container{
+    padding: 10px 0 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-start;
+}
+#fieldset__design--{
+    &palette-1, &palette-2, &palette-3, &palette-4{
+        vertical-align: 30%;
+    }
+}
+.font-montserrat{
+    @include text-montserrat-16-400;
+    margin-left: 5px;
+}
+.font-cherry{
+    @include text-cherry-16-400;
+    margin-left: 5px;
+}
+.font-kalam{
+    @include text-kalam-16-400;
+    margin-left: 5px;
+}
+#github {
+    margin-bottom: 34px;
+}
+
+.palette1-{
+    &c1{background-color: $dark-green-blue;}
+    &c2{background-color: $dirty-blue;}
+    &c3{background-color: $hospital-green;}
+}
+.palette2-{
+    &c1{background-color: $dried-blood;}
+    &c2{background-color: $rusty-red;}
+    &c3{background-color: $tomato;}
+}
+.palette3-{
+    &c1{background-color: $slate;}
+    &c2{background-color: $faded-orange;}
+    &c3{background-color: $light-grey-blue;}
+}
+.palette4-{
+    &c1{background-color: $jungle-green;}
+    &c2{background-color: $jungle-yellow;}
+    &c3{background-color: $jungle-orange;}
+}
