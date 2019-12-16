@@ -14,22 +14,22 @@ class Cardpreview extends React.Component {
                         <div className="preview_card-image js__profile-image"></div>
                         <ul className="preview_card-social">
                             <li className="item item_phone opacity">
-                                <a className="item_btn" id="phone-icon">
+                                <a className="item_btn" id="phone-icon" href="">
                                     <i className="fas fa-mobile-alt" id="preview_card-icons"></i>
                                 </a>
                             </li>
                             <li className="item item_email opacity">
-                                <a className="item_btn" id="email-icon">
+                                <a className="item_btn" id="email-icon" href="">
                                     <i className="far fa-envelope" id="preview_card-icons"></i>
                                 </a>
                             </li>
                             <li className="item item_linkedin opacity">
-                                <a className="item_btn" id="linkedin-icon" target="_blank">
+                                <a className="item_btn" id="linkedin-icon" target="_blank" href="">
                                     <i className="fab fa-linkedin-in" id="preview_card-icons"></i>
                                 </a>
                             </li>
                             <li className="item item_github opacity">
-                                <a className="item_btn" id="github-icon" target="_blank">
+                                <a className="item_btn" id="github-icon" target="_blank" href="">
                                     <i className="fab fa-github-alt" id="preview_card-icons"></i>
                                 </a>
                             </li>

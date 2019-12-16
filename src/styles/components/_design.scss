@@ -1,3 +1,34 @@
+.form_wrapper{
+    margin: 0px 20px;
+    align-self: center;
+    padding-top: 15px;
+}
+.fieldset{
+    border-bottom: 1px solid $white-two;
+    
+}
+.form_title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.form_title{
+    @include text-open-18-600;
+    color: $gunmetal;
+    margin: 12px 0;
+
+    &-icon{
+        color: $dull-orange;
+        margin-right: 10px;
+    }
+}
+
+.fa-chevron-down{
+    color: $gunmetal;
+}
+
 .color, .fonts{
     display: flex;
     flex-direction: row;
