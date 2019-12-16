@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from './components/header'
-// import LandingHome from'./components/landing';
+//import LandingHome from'./components/landing';
 import AppFooter from './components/footer'
 
 import './App.scss';
 
 
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="Main">
