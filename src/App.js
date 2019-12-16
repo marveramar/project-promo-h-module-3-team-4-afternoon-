@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-// import Header from './components/header'
-// import AppFooter from './components/footer'
-import Palette from './components/PaletteDesign'
 import './App.scss';
+
+import React from 'react';
+import Header from './components/header';
+import Palette from './components/PaletteDesign';
 import Fonts from './components/FontsDesign';
+import CardPreview from './components/cardpreview';
+import SharedForm from './components/shared_form';
+import Input from './components/inputForm';
+import AppFooter from './components/footer';
 
+//import LandingHome from'./components/landing';
 
-
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="Main">
@@ -15,9 +20,12 @@ class App extends Component {
         <AppFooter></AppFooter> */}
         <Palette></Palette>
         <Fonts></Fonts>
-      </div>
+        <CardPreview></CardPreview>
+        {/*<LandingHome></LandingHome>*/}
+        <Input></Input>
+        <SharedForm></SharedForm>
+      </div >
     )
   }
-
 }
 export default App;
