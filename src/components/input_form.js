@@ -11,6 +11,8 @@ class Input extends Component {
             job: '',
             email: '',
             tel: '',
+            linkedin: '',
+            github: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,6 +33,10 @@ class Input extends Component {
                 <input id="name" type="text" placeholder="" value={this.state.email} onChange={this.handleChange} />
                 <label htmlFor="tel">Teléfono:</label>
                 <input id="name" type="text" value={this.state.tel} onChange={this.handleChange} />
+                <label htmlFor="tel">Linkedin:</label>
+                <input id="name" type="text" value={this.state.linkedin} onChange={this.handleChange} />
+                <label htmlFor="tel">Github:</label>
+                <input id="name" type="text" value={this.state.github} onChange={this.handleChange} />
                 <input type="submit" value="Enviar" />
             </form>
         );
