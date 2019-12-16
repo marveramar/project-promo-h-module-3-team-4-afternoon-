@@ -1,7 +1,5 @@
 import React from 'react';
 
-
-
 class SharedForm extends React.Component {
     render() {
         return (
