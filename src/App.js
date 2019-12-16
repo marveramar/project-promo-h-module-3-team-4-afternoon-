@@ -1,7 +1,9 @@
 import React from 'react';
-import Header from './components/header'
+import Header from './components/header';
+import CardPreview from './components/cardpreview';
+import AppFooter from './components/footer';
 //import LandingHome from'./components/landing';
-import AppFooter from './components/footer'
+
 
 import './App.scss';
 import SharedForm from './components/shared_form';
@@ -13,6 +15,7 @@ class App extends React.Component {
     return (
       <div className="Main">
         <Header></Header>
+        <CardPreview></CardPreview>
         {/*<LandingHome></LandingHome>*/}
         <SharedForm></SharedForm>
         <AppFooter></AppFooter>
