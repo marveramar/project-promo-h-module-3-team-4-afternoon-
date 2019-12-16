@@ -6,6 +6,7 @@ import AppFooter from './components/footer';
 
 
 import './App.scss';
+import SharedForm from './components/shared_form';
 
 
 
@@ -16,6 +17,7 @@ class App extends React.Component {
         <Header></Header>
         <CardPreview></CardPreview>
         {/*<LandingHome></LandingHome>*/}
+        <SharedForm></SharedForm>
         <AppFooter></AppFooter>
       </div>
     )
