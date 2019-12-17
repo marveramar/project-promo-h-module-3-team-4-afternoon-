@@ -14,11 +14,15 @@ class Home extends React.Component {
         return (
             <div className="Main">
                 <Header></Header>
-                <CardPreview></CardPreview>
-                <Palette></Palette>
-                <Fonts></Fonts>
-                <Input></Input>
-                <SharedForm></SharedForm>
+                <main className="main">
+                    <CardPreview></CardPreview>
+                    <form className="form_wrapper">
+                        <Palette></Palette>
+                        <Fonts></Fonts>
+                        <Input></Input>
+                        <SharedForm></SharedForm>
+                    </form>
+                </main>
                 <AppFooter></AppFooter>
             </div >
         )
