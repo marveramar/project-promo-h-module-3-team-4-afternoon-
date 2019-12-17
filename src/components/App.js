@@ -17,11 +17,11 @@ class App extends React.Component {
       <div className="Main">
         {/*<LandingHome></LandingHome>*/}
         <Header></Header>
+        <CardPreview></CardPreview>
         <Palette></Palette>
         <Fonts></Fonts>
         <Input></Input>
         <SharedForm></SharedForm>
-        <CardPreview></CardPreview>
         <AppFooter></AppFooter>
       </div >
     )
