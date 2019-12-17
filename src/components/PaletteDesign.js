@@ -53,11 +53,9 @@ class Palette extends Component {
                         </div>
                     </div>
                 </div>
-            </fieldset >
+            </fieldset>
         )
     }
 }
 
-
 export default Palette;
-//

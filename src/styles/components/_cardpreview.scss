@@ -7,6 +7,12 @@
 .main{
     background-image: linear-gradient(to bottom, #f5f5f5, $white-full 9%);
     height: 80%;
+    @include for-tablet-up{
+        height: 850px;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 0 40px;
+    }
 }
 .errorEmail {
 	font-size: rem(14);
@@ -25,7 +31,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-       
+    @include for-tablet-up{
+        width: 80%;
+        height: auto;
+        margin-top: 23px;
+        margin-bottom: 21px;
+        border-radius: 6px;
+        padding: 50px 0 80px;
+        border: 3px solid $dark-green-blue;
+        border-radius: 8px;
+    }
         
     &_card-container{
         height: 400px;
@@ -36,7 +51,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
+        @include for-desktop-up{
+            height: 470px;
+            width: 340px;
+        }
 
     }
     .reset{
@@ -49,7 +67,7 @@
         border-radius: 15px;
         background-color: $silver;
         font-family: $openSans-font;
-        font-size: 0.75rem;
+        font-size: rem(12);
         line-height: 20px;
         color: $gunmetal;
         text-transform: uppercase;
@@ -80,7 +98,7 @@
             text-transform: capitalize;
             font-family: $montserrat-font;
             font-weight: $bold-weight;
-            font-size: 1.125rem;
+            font-size: rem(18);
             line-height: 20px;
             color: $dark-green-blue;
             padding-left: 20px;
@@ -91,7 +109,7 @@
         &-job{
             font-family: $montserrat-font;
             font-weight: $regular-weight;
-            font-size: 1rem;
+            font-size: rem(16);
             line-height: 20px;
             color: $gunmetal;
             padding-left: 20px;
