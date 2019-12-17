@@ -79,7 +79,7 @@ class Input extends Component {
                     <div className="phone-container">
                         <label className="input_label" htmlFor="tel">Teléfono</label>
                         <input id="tel" className="input" placeholder="123456789" name="tel" type="tel" value={this.state.tel} onChange={this.eventTel} />
-                        <span class="error-alert" id="errorAlert"></span>
+                        <span className="error-alert" id="errorAlert"></span>
                     </div>
 
                     <label className="input_label" htmlFor="linkedin">Linkedin*</label>
@@ -87,7 +87,7 @@ class Input extends Component {
 
                     <label className="input_label" htmlFor="tel">Github</label>
                     <input id="github" className="input" type="text" value={this.state.github} onChange={this.eventGithub} placeholder="nombre de usuaria" />
-                    <span class="error-alert" id="errorAlert"></span>
+                    <span className="error-alert" id="errorAlert"></span>
 
 
                 </div>

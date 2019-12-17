@@ -5,7 +5,7 @@ class Cardpreview extends React.Component {
         return (
             <section className="preview">
                 <div className="preview_card-container">
-                    <button id="buttonReset" className="reset"><i class="far fa-trash-alt"></i>reset</button>
+                    <button id="buttonReset" className="reset"><i className="far fa-trash-alt"></i>reset</button>
                     <div className="preview_card">
                         <div className="preview_card-head">
                             <h2 className="preview_card-name">nombre apellido</h2>

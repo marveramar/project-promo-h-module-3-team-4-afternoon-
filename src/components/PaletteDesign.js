@@ -13,7 +13,7 @@ class Palette extends Component {
                         <p className="color_title">COLORES</p>
                         <div className="color_palettes">
                             <div className="palette-container">
-                                <label for="fieldset__design--palette-4"></label>
+                                <label htmlFor="fieldset__design--palette-4"></label>
                                 <input type="radio" name="color-palette" id="fieldset__design--palette-4" className="palette-4" value="4" />
                                 <ul className="color_theme">
                                     <li className="palette4-c1 item"></li>
@@ -22,7 +22,7 @@ class Palette extends Component {
                                 </ul>
                             </div>
                             <div className="palette-container">
-                                <label for="fieldset__design--palette-1"></label>
+                                <label htmlFor="fieldset__design--palette-1"></label>
                                 <input type="radio" name="color-palette" id="fieldset__design--palette-1" className="palette-1" value="1" />
                                 <ul className="color_theme">
                                     <li className="palette1-c1 item"></li>
@@ -31,7 +31,7 @@ class Palette extends Component {
                                 </ul>
                             </div>
                             <div className="palette-container">
-                                <label for="fieldset__design--palette-2"></label>
+                                <label htmlFor="fieldset__design--palette-2"></label>
                                 <input type="radio" name="color-palette" id="fieldset__design--palette-2" className="palette-2"
                                     value="2" />
                                 <ul className="color_theme">
@@ -41,7 +41,7 @@ class Palette extends Component {
                                 </ul>
                             </div>
                             <div className="palette-container">
-                                <label for="fieldset__design--palette-3"></label>
+                                <label htmlFor="fieldset__design--palette-3"></label>
                                 <input type="radio" name="color-palette" id="fieldset__design--palette-3" className="palette-3"
                                     value="3" />
                                 <ul className="color_theme">
