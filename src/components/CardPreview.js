@@ -37,7 +37,6 @@ class Cardpreview extends React.Component {
                     </div>
                 </div>
             </section>
-
         );
     }
 }
