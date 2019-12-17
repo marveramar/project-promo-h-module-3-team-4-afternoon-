@@ -5,16 +5,6 @@ import Landing from './Landing';
 import Home from './Home';
 
 
-// import Header from './Header';
-// import Palette from './PaletteDesign';
-// import Fonts from './FontsDesign';
-// import CardPreview from './CardPreview';
-// import SharedForm from './SharedForm';
-// import Input from './InputForm';
-// import AppFooter from './Footer';
-
-//import LandingHome from'./components/landing';
-
 class App extends React.Component {
   render() {
     return (
