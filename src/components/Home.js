@@ -46,6 +46,7 @@ class Home extends React.Component {
                 [key]: `${userInfo}`
             },
             this.saveData
+
         );
     }
 
@@ -53,8 +54,10 @@ class Home extends React.Component {
         if (this.state.name === "") {
             return "Nombre y Apellidos";
         } else {
-            return `${this.state.name}`;
+            return `${this.state.name}`
+                ;
         }
+
     }
 
     getJob() {
@@ -77,7 +80,7 @@ class Home extends React.Component {
                         <Palette></Palette>
                         <Fonts></Fonts>
                         <Input
-                            event={this.eventInput}
+                            onChange={this.eventInput}
                             data={this.state}
                         ></Input>
                         <SharedForm></SharedForm>

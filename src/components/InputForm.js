@@ -8,7 +8,7 @@ class Input extends Component {
     render() {
 
         const userData = this.props.data;
-        const action = this.props.event;
+        const action = this.props.onChange;
 
         return (
 
@@ -23,7 +23,7 @@ class Input extends Component {
                     <span className="error-alert" id="errorAlert"></span>
 
                     <label className="input_label" htmlFor="job">Puesto*</label>
-                    <input value={userData.job} id="job-title" className="input" type="text" placeholder="Front-end developer" onKeyUp={action} />
+                    <input value={userData.job} id="job-title" className="input" type="text" placeholder="Front-end developer" onChange={action} />
                     <span className="error-alert" id="errorAlert"></span>
 
                     <div className="add-image-container">

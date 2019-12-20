@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cardpreview = props => {
-    const { nameCard, jobCard } = props;
+    const { nameCard, jobCard, phoneCard, emailCard } = props;
 
     return (
         <section className="preview">
@@ -15,12 +15,12 @@ const Cardpreview = props => {
                     <div className="preview_card-image js__profile-image"></div>
                     <ul className="preview_card-social">
                         <li className="item item_phone opacity">
-                            <a className="item_btn" id="phone-icon" href="">
+                            <a className="item_btn" id="phone-icon" href={phoneCard}>
                                 <i className="fas fa-mobile-alt" id="preview_card-icons"></i>
                             </a>
                         </li>
                         <li className="item item_email opacity">
-                            <a className="item_btn" id="email-icon" href="">
+                            <a className="item_btn" id="email-icon" href={emailCard}>
                                 <i className="far fa-envelope" id="preview_card-icons"></i>
                             </a>
                         </li>
