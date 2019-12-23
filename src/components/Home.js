@@ -2,71 +2,39 @@ import '../styles/App.scss';
 
 import React from 'react';
 import Header from './Header';
-import Palette from './PaletteDesign';
-import Fonts from './FontsDesign';
+// import Palette from './PaletteDesign';
+// import Fonts from './FontsDesign';
 import CardPreview from './CardPreview';
-import SharedForm from './SharedForm';
-import Input from './InputForm';
+// import SharedForm from './SharedForm';
+// import Input from './InputForm';
 import AppFooter from './Footer';
+import Collapsable from './Collapsable';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.getDataName();
-
-
-    }
-
-    getDataName() {
-        return {
-            name: '',
-            job: '',
-            email: '',
-            tel: '',
-            linkedin: '',
-            github: ''
-
+        this.state = {
+            userData: {
+                name: 'Nombre Apellido',
+                job: 'Front-end Developer',
+                email: '',
+                tel: '',
+                linkedin: '',
+                github: ''
+            }
         }
-
+        this.onChangeHandler = this.onChangeHandler.bind(this);
+        this.getData = this.getData.bind(this);
     }
 
-    // eventName(event) {
-    //     this.setState(
-    //         { userInfo: event.target.value });
-    //     this.forceUpdate()
-    // }
-
-
-
-    eventInput = event => {
-        let key = event.currentTarget.id;
-        let userInfo = event.target.value;
-        this.setState(
-            {
-                [key]: `${userInfo}`
-            },
-            this.saveData
-
-        );
+    onChangeHandler = (name, value) => {
+        let { userData } = this.state;
+        userData[name] = value;
+        this.setState({ userData })
     }
 
-    getName() {
-        if (this.state.name === "") {
-            return "Nombre y Apellidos";
-        } else {
-            return `${this.state.name}`
-                ;
-        }
+    getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
-    }
-
-    getJob() {
-        if (this.state.job === "") {
-            return "Front End Developer";
-        } else {
-            return `${this.state.job}`;
-        }
-    }
 
     render() {
         console.log(this.state)
@@ -75,15 +43,28 @@ class Home extends React.Component {
             <div className="Main">
                 <Header></Header>
                 <main className="main">
-                    <CardPreview nameCard={this.getName()} jobCard={this.getJob()}></CardPreview>
+                    <CardPreview
+                        nameCard={this.getData().name}
+                        jobCard={this.getData().job}
+                        phoneCard={this.getData().tel}
+                        emailCard={this.getData().email}
+                        linkedinCard={this.getData().linkedin}
+                        githubCard={this.getData().github}
+
+                    ></CardPreview>
                     <form className="form_wrapper">
+                        <Collapsable
+                            onChangeHandler={this.onChangeHandler}
+
+                        />
+                        {/* 
                         <Palette></Palette>
                         <Fonts></Fonts>
                         <Input
                             onChange={this.eventInput}
                             data={this.state}
                         ></Input>
-                        <SharedForm></SharedForm>
+                        <SharedForm></SharedForm>*/}
                     </form>
                 </main>
                 <AppFooter></AppFooter>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cardpreview = props => {
-    const { nameCard, jobCard, phoneCard, emailCard } = props;
+    const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = props;
 
     return (
         <section className="preview">
@@ -15,29 +15,29 @@ const Cardpreview = props => {
                     <div className="preview_card-image js__profile-image"></div>
                     <ul className="preview_card-social">
                         <li className="item item_phone opacity">
-                            <a className="item_btn" id="phone-icon" href={phoneCard}>
+                            <a className="item_btn" id="phone-icon" href={"tel:" + phoneCard}>
                                 <i className="fas fa-mobile-alt" id="preview_card-icons"></i>
                             </a>
                         </li>
                         <li className="item item_email opacity">
-                            <a className="item_btn" id="email-icon" href={emailCard}>
+                            <a className="item_btn" id="email-icon" href={"mailto:" + emailCard}>
                                 <i className="far fa-envelope" id="preview_card-icons"></i>
                             </a>
                         </li>
                         <li className="item item_linkedin opacity">
-                            <a className="item_btn" id="linkedin-icon" target="_blank" href="">
+                            <a className="item_btn" id="linkedin-icon" target="_blank" href={"https://www.linkedin.com/in/" + linkedinCard}>
                                 <i className="fab fa-linkedin-in" id="preview_card-icons"></i>
                             </a>
                         </li>
                         <li className="item item_github opacity">
-                            <a className="item_btn" id="github-icon" target="_blank" href="">
+                            <a className="item_btn" id="github-icon" target="_blank" href={"https://github.com/" + githubCard}>
                                 <i className="fab fa-github-alt" id="preview_card-icons"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
 

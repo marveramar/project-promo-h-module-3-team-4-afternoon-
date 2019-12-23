@@ -3,6 +3,7 @@
     align-self: center;
     padding-top: 15px;
     @include for-tablet-up{
+        margin: 0;
         width: 400px;
         margin-block-end: auto;
         padding-right: 30px;  
@@ -18,6 +19,10 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+}
+
+.react-sanfona{
+    width: 320px;
 }
 .form_title{
     @include text-open-18-600;
