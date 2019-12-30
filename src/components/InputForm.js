@@ -65,8 +65,11 @@ class Input extends Component {
                 <label className="input_label" htmlFor="job">Puesto*</label>
                 <input id="job-title" className="input" type="text" placeholder="Front-end developer" value={this.props.job} onChange={this.eventJob} />
                 <span className="error-alert" id="errorAlert"></span>
-
+                
+                <label className="input_label" htmlfor="photo">Imagen de perfil *</label>
+                <input id="photo" type="file" name="photo" className="photo js__profile-upload-btn" value="" required></input>
                 <div className="add-image-container">
+                
                     <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
                     <div className="preview-image js__profile-preview"></div>
                     <span className="error-alert" id="errorAlert"></span>
