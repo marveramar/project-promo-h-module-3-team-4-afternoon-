@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
 
-class Input extends Component {
+class Input extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = this.userData;
         this.state = {
             name: '',
             job: '',
@@ -22,34 +21,46 @@ class Input extends Component {
         this.eventLinkedin = this.eventLinkedin.bind(this);
         this.eventGithub = this.eventGithub.bind(this);
     }
+    addDataChange() {
+        let userData = this.state;
+        this.setState({ userData })
+        return (localStorage.setItem('userData', JSON.stringify(userData)))
+    }
+
 
     eventName(event) {
         this.setState({ name: event.target.value });
-        this.addDataChange()
+        this.addDataChange();
+        localStorage.getItem(userData.name)
+
     }
 
     eventJob(event) {
-        this.setState({ job: event.target.value })
+        this.setState({ job: event.target.value });
         this.addDataChange()
     }
 
     eventEmail(event) {
-        this.setState({ email: event.target.value })
+        this.setState({ email: event.target.value });
+        this.addDataChange()
     }
 
     eventTel(event) {
-        this.setState({ tel: event.target.value })
+        this.setState({ tel: event.target.value });
+        this.addDataChange()
     }
 
     eventLinkedin(event) {
-        this.setState({ linkedin: event.target.value })
+        this.setState({ linkedin: event.target.value });
+        this.addDataChange()
     }
 
     eventGithub(event) {
-        this.setState({ github: event.target.value })
+        this.setState({ github: event.target.value });
+        this.addDataChange()
     }
 
- 
+
     render() {
         return (
             // <fieldset className="fieldset fieldset__fill-out">
@@ -59,17 +70,14 @@ class Input extends Component {
             //     </div>
             <div className="fill-in" id="fillIn">
                 <label className="input_label" htmlFor="name">Name*</label>
-                <input id="name" className="input" placeholder="Nombre Apellido" type="text" value={this.props.name} onChange={this.eventName} onChange={this.addDataChange} />
+                <input id="name" className="input" placeholder="Nombre Apellido" type="text" value={this.props.name} onChange={this.eventName} />
                 <span className="error-alert" id="errorAlert"></span>
 
                 <label className="input_label" htmlFor="job">Puesto*</label>
                 <input id="job-title" className="input" type="text" placeholder="Front-end developer" value={this.props.job} onChange={this.eventJob} />
                 <span className="error-alert" id="errorAlert"></span>
-                
-                <label className="input_label" htmlfor="photo">Imagen de perfil *</label>
-                <input id="photo" type="file" name="photo" className="photo js__profile-upload-btn" value="" required></input>
+
                 <div className="add-image-container">
-                
                     <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
                     <div className="preview-image js__profile-preview"></div>
                     <span className="error-alert" id="errorAlert"></span>
