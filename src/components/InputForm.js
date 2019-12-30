@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
 
-
 class Input extends Component {
 
     constructor(props) {
         super(props);
+        this.state = this.userData;
         this.state = {
             name: '',
             job: '',
@@ -14,7 +14,7 @@ class Input extends Component {
             linkedin: '',
             github: '',
         };
-
+        this.addDataChange = this.addDataChange.bind(this);
         this.eventName = this.eventName.bind(this);
         this.eventJob = this.eventJob.bind(this);
         this.eventEmail = this.eventEmail.bind(this);
@@ -25,10 +25,12 @@ class Input extends Component {
 
     eventName(event) {
         this.setState({ name: event.target.value });
+        this.addDataChange()
     }
 
     eventJob(event) {
         this.setState({ job: event.target.value })
+        this.addDataChange()
     }
 
     eventEmail(event) {
@@ -47,8 +49,7 @@ class Input extends Component {
         this.setState({ github: event.target.value })
     }
 
-
-
+ 
     render() {
         return (
             // <fieldset className="fieldset fieldset__fill-out">
@@ -58,11 +59,11 @@ class Input extends Component {
             //     </div>
             <div className="fill-in" id="fillIn">
                 <label className="input_label" htmlFor="name">Name*</label>
-                <input id="name" className="input" placeholder="Nombre Apellido" type="text" value={this.state.name} onChange={this.eventName} />
+                <input id="name" className="input" placeholder="Nombre Apellido" type="text" value={this.props.name} onChange={this.eventName} onChange={this.addDataChange} />
                 <span className="error-alert" id="errorAlert"></span>
 
                 <label className="input_label" htmlFor="job">Puesto*</label>
-                <input id="job-title" className="input" type="text" placeholder="Front-end developer" value={this.state.job} onChange={this.eventJob} />
+                <input id="job-title" className="input" type="text" placeholder="Front-end developer" value={this.props.job} onChange={this.eventJob} />
                 <span className="error-alert" id="errorAlert"></span>
 
                 <div className="add-image-container">

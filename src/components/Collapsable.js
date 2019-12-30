@@ -14,21 +14,10 @@ class Collapsable extends React.Component {
         // this.rotateArrow = this.rotateArrow.bind(this);
     }
 
-    // rotateArrow(event) {
-    //     this.setState((prevState, props) => {
-    //         let nextStyling;
-    //         if (prevState.styling === '') {
-    //             nextStyling = 'rotate';
-    //         } else {
-    //             nextStyling = '';
-    //         }
-    //         return {
-    //             styling: nextStyling
-    //         }
-    //     });
-    // }
 
     render() {
+        let styles = this.state.styling;
+
         return (
             <fieldset className="fieldset fieldset__design">
                 <div className="form_title-container">
@@ -51,6 +40,21 @@ class Collapsable extends React.Component {
                                     id={index}
                                 >
                                     <div ref="itemRef">
+                                        {/* const rotateArrow(event) {
+                                            this.setState((prevState, props) => {
+                                                let nextStyling;
+                                                if (prevState.styling === '' && index === 0) {
+                                                    nextStyling = 'rotate';
+                                                    <Palette />
+                                                } else {
+                                                    nextStyling = '';
+                                                    null;
+                                                }
+                                                return {
+                                                    styling: nextStyling
+                                                }
+                                            })
+                                        } */}
                                         {index === 0 ? (<Palette />) : null}
                                         {index === 1 ? (<Input />) : null}
                                         {index === 2 ? (<SharedForm />) : null}
