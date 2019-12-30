@@ -23,14 +23,17 @@ class Home extends React.Component {
                 github: ''
             }
         }
+
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
     }
+
 
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
+        localStorage.setItem('userData', JSON.stringify(userData))
     }
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
