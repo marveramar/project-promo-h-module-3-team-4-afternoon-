@@ -56,7 +56,10 @@ class Collapsable extends React.Component {
                                             })
                                         } */}
                                         {index === 0 ? (<Palette />) : null}
-                                        {index === 1 ? (<Input />) : null}
+                                        {index === 1 ? (<Input
+                                            onChangeHandler={this.props.onChangeHandler}
+                                            data={this.props.data}
+                                        />) : null}
                                         {index === 2 ? (<SharedForm />) : null}
                                     </div>
                                 </AccordionItem>
