@@ -55,6 +55,7 @@ class Collapsable extends React.Component {
                                         {index === 1 ? (<Input
                                             onChangeHandler={this.props.onChangeHandler}
                                             data={this.props.data}
+                                            handlerOpacityLink = {this.props.handlerOpacityLink}
                                         />) : null}
                                         {index === 2 ? (<SharedForm />) : null}
                                     </div>

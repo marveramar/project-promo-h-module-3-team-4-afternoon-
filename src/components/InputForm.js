@@ -6,11 +6,14 @@ class Input extends Component {
     constructor(props) {
         super(props)
         this.onChangeHandler = this.onChangeHandler.bind(this)
+        
     }
 
     onChangeHandler(event) {
         this.props.onChangeHandler(event.target.name, event.target.value)
     }
+    
+
 
     render() {
 
@@ -54,7 +57,7 @@ class Input extends Component {
                 <label className="input_label" htmlFor="linkedin">Linkedin*</label>
                 <input id="linkedin" name="linkedin" className="input" placeholder="nombre de usuaria" type="text" value={userData} onChange={this.onChangeHandler} />
 
-                <label className="input_label" htmlFor="tel">Github</label>
+                <label className="input_label" htmlFor="tel">Github*</label>
                 <input id="github" name="github" className="input" type="text" value={userData} onChange={this.onChangeHandler} placeholder="nombre de usuaria" />
                 <span className="error-alert" id="errorAlert"></span>
 

@@ -21,7 +21,7 @@ class Home extends React.Component {
                 tel: '',
                 linkedin: '',
                 github: ''
-            }
+            },
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
@@ -32,6 +32,7 @@ class Home extends React.Component {
         userData[name] = value;
         this.setState({ userData })
     }
+
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
@@ -50,6 +51,7 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
+                        opacity={this.state.opacity}
 
                     ></CardPreview>
                     <form className="form_wrapper">
