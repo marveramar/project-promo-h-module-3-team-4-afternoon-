@@ -9,6 +9,7 @@ import CardPreview from './CardPreview';
 // import Input from './InputForm';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
+import defaultImage from './defaultImage';
 
 class Home extends React.Component {
     constructor(props) {
@@ -21,10 +22,15 @@ class Home extends React.Component {
                 tel: '',
                 linkedin: '',
                 github: ''
+            },
+            isAvatarDefault: true,
+            profile: {
+                avatar: defaultImage
             }
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
+        this.updateAvatar = this.updateAvatar.bind(this);
     }
 
     onChangeHandler = (name, value) => {
@@ -35,7 +41,16 @@ class Home extends React.Component {
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
-
+    updateAvatar(img) {
+        const { profile } = this.state;
+        this.setState(prevState => {
+            const newProfile = { ...profile, avatar: img };
+            return {
+                profile: newProfile,
+                isAvatarDefault: false
+            }
+        });
+    }
     render() {
         console.log(this.state)
 
@@ -50,11 +65,15 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
+                        avatar={this.state.profile.avatar}
 
                     ></CardPreview>
                     <form className="form_wrapper">
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
+                            avatar={this.state.profile.avatar}
+                            isAvatarDefault={this.state.isAvatarDefault}
+                            updateAvatar={this.updateAvatar}
 
                         />
                         {/* 
