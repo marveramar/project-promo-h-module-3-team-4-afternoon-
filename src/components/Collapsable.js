@@ -58,7 +58,9 @@ class Collapsable extends React.Component {
                                         {index === 0 ? (<Palette />) : null}
                                         {index === 1 ? (<Input
                                             onChangeHandler={this.props.onChangeHandler}
-                                            data={this.props.data}
+                                            // getLocal={this.getLocal}
+                                            name={this.props.nameCard}
+                                            userData={this.props.userData}
                                         />) : null}
                                         {index === 2 ? (<SharedForm />) : null}
                                     </div>

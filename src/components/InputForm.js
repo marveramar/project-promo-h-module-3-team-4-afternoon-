@@ -16,9 +16,11 @@ class Input extends React.Component {
 
     }
 
-    render() {
-        const userData = this.props.userData;
 
+    render() {
+
+        const userData = this.props.userData;
+        console.log(userData)
         return (
             // <fieldset className="fieldset fieldset__fill-out">
             //     <div id="fillInContainer" className="form_title-container">
