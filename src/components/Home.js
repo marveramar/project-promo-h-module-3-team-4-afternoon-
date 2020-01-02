@@ -73,6 +73,7 @@ class Home extends React.Component {
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
                         handleReset={this.handleReset}
+                        opacity={this.state.opacity}
 
                     ></CardPreview>
                     <form className="form_wrapper" >

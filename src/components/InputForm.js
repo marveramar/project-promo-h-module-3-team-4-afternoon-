@@ -6,11 +6,14 @@ class Input extends Component {
     constructor(props) {
         super(props)
         this.onChangeHandler = this.onChangeHandler.bind(this)
+
     }
 
     onChangeHandler(event) {
         this.props.onChangeHandler(event.target.name, event.target.value)
     }
+
+
 
     render() {
 
