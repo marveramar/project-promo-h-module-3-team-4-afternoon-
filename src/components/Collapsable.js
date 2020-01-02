@@ -58,6 +58,7 @@ class Collapsable extends React.Component {
                                         avatar={this.props.avatar}
                                         isAvatarDefault={this.props.isAvatarDefault}
                                         updateAvatar={this.props.updateAvatar}
+                                        handlerOpacityLink={this.props.handlerOpacityLink}
                                     />) : null}
                                     {index === 2 ? (<SharedForm />) : null}
                                 </div>

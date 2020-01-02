@@ -26,11 +26,13 @@ class Home extends React.Component {
             isAvatarDefault: true,
             profile: {
                 avatar: defaultImage
-            }
+            },
+            errors: {}
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     onChangeHandler = (name, value) => {
@@ -38,6 +40,22 @@ class Home extends React.Component {
         userData[name] = value;
         this.setState({ userData })
     }
+
+
+    handleReset(e) {
+        e.preventDefault();
+        this.setState({
+            userData: {
+                name: 'Nombre Apellido',
+                job: 'Front-end Developer',
+                email: '',
+                tel: '',
+                linkedin: '',
+                github: ''
+            },
+        });
+    }
+
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
@@ -51,6 +69,8 @@ class Home extends React.Component {
             }
         });
     }
+
+
     render() {
         console.log(this.state)
 
@@ -66,9 +86,11 @@ class Home extends React.Component {
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
                         avatar={this.state.profile.avatar}
+                        handleReset={this.handleReset}
+                        opacity={this.state.opacity}
 
                     ></CardPreview>
-                    <form className="form_wrapper">
+                    <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
                             avatar={this.state.profile.avatar}
