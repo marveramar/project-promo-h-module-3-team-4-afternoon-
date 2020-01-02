@@ -32,7 +32,7 @@ class Input extends Component {
                 <input id="job-title" name="job" className="input" type="text" placeholder="Front-end developer" value={userData} onChange={this.onChangeHandler} />
                 <span className="error-alert" id="errorAlert"></span>
 
-                <label className="input_label" htmlfor="photo">Imagen de perfil *</label>
+                <label className="input_label" htmlFor="photo">Imagen de perfil *</label>
                 {/* <input id="photo" type="file" name="photo" className="photo js__profile-upload-btn" value="" required></input>
                 <div className="add-image-container">
 
