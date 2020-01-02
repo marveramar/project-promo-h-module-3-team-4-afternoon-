@@ -24,15 +24,39 @@ class Input extends Component {
             //     </div>
             <div className="fill-in" id="fillIn">
                 <label className="input_label" htmlFor="name">Name*</label>
-                <input id="name" name="name" className="input" placeholder="Nombre Apellido" type="text" value={userData} onChange={this.onChangeHandler} />
+                <input
+                    id="name"
+                    name="name"
+                    className="input"
+                    placeholder="Nombre Apellido"
+                    type="text"
+                    value={userData}
+                    onChange={this.onChangeHandler}
+                />
                 <span className="error-alert" id="errorAlert"></span>
 
                 <label className="input_label" htmlFor="job">Puesto*</label>
-                <input id="job-title" name="job" className="input" type="text" placeholder="Front-end developer" value={userData} onChange={this.onChangeHandler} />
+                <input
+                    id="job-title"
+                    name="job"
+                    className="input"
+                    type="text"
+                    placeholder="Front-end developer"
+                    value={userData}
+                    onChange={this.onChangeHandler}
+                />
                 <span className="error-alert" id="errorAlert"></span>
 
                 <label className="input_label" htmlfor="photo">Imagen de perfil *</label>
-                <input id="photo" type="file" name="photo" className="photo js__profile-upload-btn" value="" required></input>
+                <input
+                    id="photo"
+                    type="file"
+                    name="photo"
+                    className="photo js__profile-upload-btn"
+                    value=""
+                    required
+
+                />
                 <div className="add-image-container">
 
                     <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
@@ -42,20 +66,51 @@ class Input extends Component {
 
                 <div className="email-container">
                     <label className="input_label" htmlFor="email">Email*</label>
-                    <input id="email" className="input" type="email" name="email" placeholder="nombre.apellido@gmail.com" value={userData} onChange={this.onChangeHandler} />
+                    <input
+                        id="email"
+                        className="input"
+                        type="email"
+                        name="email"
+                        placeholder="nombre.apellido@gmail.com"
+                        value={userData}
+                        onChange={this.onChangeHandler}
+                    />
                     <span className="error-alert" id="errorAlert"></span>
                 </div>
                 <div className="phone-container">
                     <label className="input_label" htmlFor="tel">Teléfono</label>
-                    <input id="tel" className="input" placeholder="123456789" name="tel" type="tel" value={userData} onChange={this.onChangeHandler} />
+                    <input
+                        id="tel" className="input"
+                        placeholder="123456789"
+                        name="tel"
+                        type="tel"
+                        value={userData}
+                        onChange={this.onChangeHandler}
+                    />
                     <span className="error-alert" id="errorAlert"></span>
                 </div>
 
                 <label className="input_label" htmlFor="linkedin">Linkedin*</label>
-                <input id="linkedin" name="linkedin" className="input" placeholder="nombre de usuaria" type="text" value={userData} onChange={this.onChangeHandler} />
+                <input
+                    id="linkedin"
+                    name="linkedin"
+                    className="input"
+                    placeholder="nombre de usuaria"
+                    type="text"
+                    value={userData}
+                    onChange={this.onChangeHandler}
+                />
 
                 <label className="input_label" htmlFor="tel">Github</label>
-                <input id="github" name="github" className="input" type="text" value={userData} onChange={this.onChangeHandler} placeholder="nombre de usuaria" />
+                <input
+                    id="github"
+                    name="github"
+                    className="input"
+                    type="text"
+                    value={userData}
+                    onChange={this.onChangeHandler}
+                    placeholder="nombre de usuaria"
+                />
                 <span className="error-alert" id="errorAlert"></span>
 
 

@@ -21,10 +21,12 @@ class Home extends React.Component {
                 tel: '',
                 linkedin: '',
                 github: ''
-            }
+            },
+            errors: {}
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
+        this.handleReset = this.handleReset.bind(this);
     }
 
     onChangeHandler = (name, value) => {
@@ -33,7 +35,27 @@ class Home extends React.Component {
         this.setState({ userData })
     }
 
+
+    handleReset(e) {
+        e.preventDefault();
+        this.setState({
+            userData: {
+                name: 'Nombre Apellido',
+                job: 'Front-end Developer',
+                email: '',
+                tel: '',
+                linkedin: '',
+                github: ''
+            },
+        });
+    }
+
+
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
+
+
+
+
 
 
     render() {
@@ -50,9 +72,10 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
+                        handleReset={this.handleReset}
 
                     ></CardPreview>
-                    <form className="form_wrapper">
+                    <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
 
