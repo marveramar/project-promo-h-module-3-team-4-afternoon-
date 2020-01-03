@@ -1,7 +1,11 @@
 import React from 'react';
 
-class SharedForm extends React.Component {
-    render() {
+const SharedForm =(props)=> {
+
+    const handleApiFetch=(event)=>{
+        event.preventDefault();
+        props.handleApiFetch();
+    }
         return (
             // <fieldset className="fieldset fieldset__share">
             //     <div id="shareContainer" className="form_title-container">
@@ -10,7 +14,7 @@ class SharedForm extends React.Component {
             //     </div>
             <div className="share" id="share">
                 <div className="create_card">
-                    <button type="submit" value="submit" id="createCardButton" className="create_card-btn"><i
+                    <button onClick={handleApiFetch} type="submit" value="submit" id="createCardButton" className="create_card-btn"><i
                         className="far fa-address-card"> CREAR TARJETA</i></button>
                     <span className="error-message errorEmail">*Faltan campos por completar*</span>
                 </div>
@@ -24,8 +28,6 @@ class SharedForm extends React.Component {
 
         );
 
-
-    }
 
 }
 

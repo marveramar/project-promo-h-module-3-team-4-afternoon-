@@ -10,6 +10,7 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
+import { handleApiFetch} from '../service/ApiFetch'
 
 class Home extends React.Component {
     constructor(props) {
@@ -27,12 +28,14 @@ class Home extends React.Component {
             profile: {
                 avatar: defaultImage
             },
-            errors: {}
+            errors: {},
+            urlApi:''
         }
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
         this.handleReset = this.handleReset.bind(this);
+        this.handleApiFetch= this.handleApiFetch.bind(this);
     }
 
     onChangeHandler = (name, value) => {
@@ -48,6 +51,7 @@ class Home extends React.Component {
             userData: {
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
+                photo: '',
                 email: '',
                 tel: '',
                 linkedin: '',
@@ -68,6 +72,16 @@ class Home extends React.Component {
                 isAvatarDefault: false
             }
         });
+    }
+
+    handleApiFetch(){
+        handleApiFetch(this.state.userData)
+        .then(data=>{
+            this.setState({
+                createCard: data
+            })
+            console.log(data)
+          })
     }
 
 
@@ -96,6 +110,7 @@ class Home extends React.Component {
                             avatar={this.state.profile.avatar}
                             isAvatarDefault={this.state.isAvatarDefault}
                             updateAvatar={this.updateAvatar}
+                            handleApiFetch={this.handleApiFetch}
 
                         />
                         {/* 
