@@ -61,62 +61,62 @@ class Input extends React.Component {
                 <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
                 <div className="preview-image js__profile-preview"></div>
                 <span className="error-alert" id="errorAlert"></span>
-            </div> * /}
+            </div>  */}
 
-            < GetAvatar
-        avatar = { this.props.avatar }
-        isAvatarDefault = { this.props.isAvatarDefault }
-        updateAvatar = { this.props.updateAvatar }
-            />
+                < GetAvatar
+                    avatar={this.props.avatar}
+                    isAvatarDefault={this.props.isAvatarDefault}
+                    updateAvatar={this.props.updateAvatar}
+                />
 
-            <div className="email-container">
-                <label className="input_label" htmlFor="email">Email*</label>
+                <div className="email-container">
+                    <label className="input_label" htmlFor="email">Email*</label>
+                    <input
+                        id="email"
+                        className="input"
+                        type="email"
+                        name="email"
+                        placeholder="nombre.apellido@gmail.com"
+                        value={userData}
+                        onChange={this.onChangeHandler}
+                    />
+                    <span className="error-alert" id="errorAlert"></span>
+                </div>
+                <div className="phone-container">
+                    <label className="input_label" htmlFor="tel">Teléfono</label>
+                    <input
+                        id="tel" className="input"
+                        placeholder="123456789"
+                        name="tel"
+                        type="tel"
+                        value={userData}
+                        onChange={this.onChangeHandler}
+                    />
+                    <span className="error-alert" id="errorAlert"></span>
+                </div>
+
+                <label className="input_label" htmlFor="linkedin">Linkedin*</label>
                 <input
-                    id="email"
+                    id="linkedin"
+                    name="linkedin"
                     className="input"
-                    type="email"
-                    name="email"
-                    placeholder="nombre.apellido@gmail.com"
+                    placeholder="nombre de usuaria"
+                    type="text"
                     value={userData}
                     onChange={this.onChangeHandler}
                 />
-                <span className="error-alert" id="errorAlert"></span>
-            </div>
-            <div className="phone-container">
-                <label className="input_label" htmlFor="tel">Teléfono</label>
+
+                <label className="input_label" htmlFor="tel">Github</label>
                 <input
-                    id="tel" className="input"
-                    placeholder="123456789"
-                    name="tel"
-                    type="tel"
+                    id="github"
+                    name="github"
+                    className="input"
+                    type="text"
                     value={userData}
                     onChange={this.onChangeHandler}
+                    placeholder="nombre de usuaria"
                 />
                 <span className="error-alert" id="errorAlert"></span>
-            </div>
-
-            <label className="input_label" htmlFor="linkedin">Linkedin*</label>
-            <input
-                id="linkedin"
-                name="linkedin"
-                className="input"
-                placeholder="nombre de usuaria"
-                type="text"
-                value={userData}
-                onChange={this.onChangeHandler}
-            />
-
-            <label className="input_label" htmlFor="tel">Github</label>
-            <input
-                id="github"
-                name="github"
-                className="input"
-                type="text"
-                value={userData}
-                onChange={this.onChangeHandler}
-                placeholder="nombre de usuaria"
-            />
-            <span className="error-alert" id="errorAlert"></span>
 
 
             </div >

@@ -1,5 +1,4 @@
 import '../styles/App.scss';
-
 import React from 'react';
 import Header from './Header';
 // import Palette from './PaletteDesign';
@@ -9,7 +8,6 @@ import CardPreview from './CardPreview';
 // import Input from './InputForm';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
-let userData = '';
 import defaultImage from './defaultImage';
 
 class Home extends React.Component {
