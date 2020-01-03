@@ -18,8 +18,8 @@ class Home extends React.Component {
 
                 palette: '',
                 font: '',
-                name: 'Nombre Apellido',
-                job: 'Front-end Developer',
+                name: '',
+                job: '',
                 email: '',
                 tel: '',
                 linkedin: '',
@@ -52,6 +52,8 @@ class Home extends React.Component {
         e.preventDefault();
         this.setState({
             userData: {
+                palette: '',
+                font: '',
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
                 email: '',
@@ -67,10 +69,12 @@ class Home extends React.Component {
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
     componentDidMount() {
+
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
+
     }
     updateAvatar(img) {
         const { profile } = this.state;
@@ -105,11 +109,13 @@ class Home extends React.Component {
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <Collapsable
+                            componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
                             onChangeHandler={this.onChangeHandler}
                             avatar={this.state.profile.avatar}
                             isAvatarDefault={this.state.isAvatarDefault}
                             updateAvatar={this.updateAvatar}
+                            data={this.state.userData}
 
                         />
                         {/* 

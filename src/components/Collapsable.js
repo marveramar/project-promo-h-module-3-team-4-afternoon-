@@ -13,14 +13,15 @@ class Collapsable extends React.Component {
         };
         this.rotateArrow = this.rotateArrow.bind(this);
     }
+
     rotateArrow() {
         if (this.state === '') {
             this.setState({ styling: 'rotate' })
         } else {
             this.state = ''
         }
-    }
 
+    }
     render() {
         let styles = this.state.styling;
 
@@ -52,6 +53,7 @@ class Collapsable extends React.Component {
 
                                     ) : null}
                                     {index === 1 ? (<Input
+
                                         onChangeHandler={this.props.onChangeHandler}
                                         data={this.props.data}
                                         avatar={this.props.avatar}

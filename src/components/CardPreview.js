@@ -10,8 +10,8 @@ const Cardpreview = props => {
                 <button id="buttonReset" className="reset" onClick={props.handleReset}><i className="far fa-trash-alt"></i>reset</button>
                 <div className="preview_card">
                     <div className="preview_card-head">
-                        <h2 className="preview_card-name">{nameCard}</h2>
-                        <h3 className="preview_card-job">{jobCard}</h3>
+                        <h2 className="preview_card-name">{nameCard === '' ? 'Nombre Apellido' : nameCard}</h2>
+                        <h3 className="preview_card-job">{jobCard === '' ? 'Front-end Developer' : jobCard}</h3>
                     </div>
                     <div className="preview_card-image js__profile-image">
                         <Profile
