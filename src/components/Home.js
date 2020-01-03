@@ -1,5 +1,4 @@
 import '../styles/App.scss';
-
 import React from 'react';
 import Header from './Header';
 // import Palette from './PaletteDesign';
@@ -16,6 +15,9 @@ class Home extends React.Component {
         super(props);
         this.state = {
             userData: {
+
+                palette: '',
+                font: '',
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
                 email: '',
@@ -29,16 +31,20 @@ class Home extends React.Component {
             },
             errors: {}
         }
+
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updateAvatar = this.updateAvatar.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
+
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
+        localStorage.setItem('userData', JSON.stringify(userData))
+
     }
 
 
@@ -54,11 +60,18 @@ class Home extends React.Component {
                 github: ''
             },
         });
+        localStorage.clear()
     }
 
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
+    componentDidMount() {
+        const getLocal = JSON.parse(localStorage.getItem('userData'));
+        if (getLocal !== null) {
+            this.setState({ userData: getLocal })
+        }
+    }
     updateAvatar(img) {
         const { profile } = this.state;
         this.setState(prevState => {

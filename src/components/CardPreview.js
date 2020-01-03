@@ -7,7 +7,7 @@ const Cardpreview = props => {
     return (
         <section className="preview">
             <div className="preview_card-container">
-                <button id="buttonReset" className="reset" onClick={props.handleReset}><i class="far fa-trash-alt"></i>reset</button>
+                <button id="buttonReset" className="reset" onClick={props.handleReset}><i className="far fa-trash-alt"></i>reset</button>
                 <div className="preview_card">
                     <div className="preview_card-head">
                         <h2 className="preview_card-name">{nameCard}</h2>
