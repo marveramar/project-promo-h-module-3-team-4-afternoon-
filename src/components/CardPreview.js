@@ -1,4 +1,5 @@
 import React from 'react';
+import Profile from './Profile';
 
 const Cardpreview = props => {
     const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = props;
@@ -12,7 +13,11 @@ const Cardpreview = props => {
                         <h2 className="preview_card-name">{nameCard}</h2>
                         <h3 className="preview_card-job">{jobCard}</h3>
                     </div>
-                    <div className="preview_card-image js__profile-image"></div>
+                    <div className="preview_card-image js__profile-image">
+                        <Profile
+                            avatar={props.avatar}
+                        />
+                    </div>
                     <ul className="preview_card-social">
                         <li className={`item item_phone ${(phoneCard) ? '' : 'opacity'}`}>
                             <a className="item_btn" id="phone-icon" href={"tel:" + phoneCard}>

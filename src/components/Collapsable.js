@@ -40,24 +40,13 @@ class Collapsable extends React.Component {
                                 id={index}
                             >
                                 <div ref="itemRef">
-                                    {/* const rotateArrow(event) {
-                                            this.setState((prevState, props) => {
-                                                let nextStyling;
-                                                if (prevState.styling === '' && index === 0) {
-                                                    nextStyling = 'rotate';
-                                                    <Palette />
-                                                } else {
-                                                    nextStyling = '';
-                                                    null;
-                                                }
-                                                return {
-                                                    styling: nextStyling
-                                                }
-                                            })
-                                        } */}
                                     {index === 0 ? (<Palette />) : null}
                                     {index === 1 ? (<Input
                                         onChangeHandler={this.props.onChangeHandler}
+                                        data={this.props.data}
+                                        avatar={this.props.avatar}
+                                        isAvatarDefault={this.props.isAvatarDefault}
+                                        updateAvatar={this.props.updateAvatar}
                                         handlerOpacityLink={this.props.handlerOpacityLink}
                                     />) : null}
                                     {index === 2 ? (<SharedForm />) : null}
@@ -67,7 +56,6 @@ class Collapsable extends React.Component {
                         }
                         )}
                     </Accordion>
-
                 </div>
             </fieldset >
         )

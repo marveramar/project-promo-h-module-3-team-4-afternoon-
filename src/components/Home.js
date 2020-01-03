@@ -10,6 +10,8 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 let userData = '';
+import defaultImage from './defaultImage';
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -25,11 +27,16 @@ class Home extends React.Component {
                 linkedin: '',
                 github: ''
             },
+            isAvatarDefault: true,
+            profile: {
+                avatar: defaultImage
+            },
             errors: {}
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
+        this.updateAvatar = this.updateAvatar.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
@@ -67,6 +74,17 @@ class Home extends React.Component {
             this.setState({ userData: getLocal })
         }
     }
+    updateAvatar(img) {
+        const { profile } = this.state;
+        this.setState(prevState => {
+            const newProfile = { ...profile, avatar: img };
+            return {
+                profile: newProfile,
+                isAvatarDefault: false
+            }
+        });
+    }
+
 
     render() {
         console.log(this.state)
@@ -82,6 +100,7 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
+                        avatar={this.state.profile.avatar}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
 
@@ -89,6 +108,10 @@ class Home extends React.Component {
                     <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
+                            avatar={this.state.profile.avatar}
+                            isAvatarDefault={this.state.isAvatarDefault}
+                            updateAvatar={this.updateAvatar}
+
                         />
                         {/* 
                         <Palette></Palette>
