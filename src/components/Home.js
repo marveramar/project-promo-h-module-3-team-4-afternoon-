@@ -1,5 +1,4 @@
 import '../styles/App.scss';
-
 import React from 'react';
 import Header from './Header';
 // import Palette from './PaletteDesign';
@@ -10,38 +9,43 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
-import { handleApiFetch} from '../service/ApiFetch'
+import {handleApiFetch} from '../service/ApiFetch'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userData: {
+
+                palette: '',
+                font: '',
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
                 github: ''
             },
-            isAvatarDefault: true,
-            profile: {
-                avatar: defaultImage
-            },
+            isPhotoDefault: true,
             errors: {},
-            urlApi:''
+            dataUrl:''
         }
+
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
-        this.updateAvatar = this.updateAvatar.bind(this);
+        this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch= this.handleApiFetch.bind(this);
     }
+
 
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
+        localStorage.setItem('userData', JSON.stringify(userData))
+
     }
 
 
@@ -49,39 +53,52 @@ class Home extends React.Component {
         e.preventDefault();
         this.setState({
             userData: {
+                palette: 1,
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
-                photo: '',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
                 github: ''
             },
         });
+        localStorage.clear()
     }
 
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
-    updateAvatar(img) {
-        const { profile } = this.state;
+
+    componentDidMount() {
+        const getLocal = JSON.parse(localStorage.getItem('userData'));
+        if (getLocal !== null) {
+            this.setState({ userData: getLocal })
+        }
+        return(getLocal)
+    }
+    updatePhoto(img) {
+        const { userData } = this.state;
         this.setState(prevState => {
-            const newProfile = { ...profile, avatar: img };
+            const newProfile = { ...userData, photo: img };
             return {
-                profile: newProfile,
-                isAvatarDefault: false
+                userData: newProfile,
+                isPhotoDefault: false
             }
         });
     }
 
     handleApiFetch(){
-        handleApiFetch(this.state.userData)
+        const getItem = JSON.parse(localStorage.getItem('userData'));
+        handleApiFetch(getItem)
         .then(data=>{
-            this.setState({
-                createCard: data
-            })
             console.log(data)
+            this.setState({
+                dataUrl: data.cardURL
+            })
+            
           })
+          
     }
 
 
@@ -99,18 +116,20 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
-                        avatar={this.state.profile.avatar}
+                        photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
+                        
 
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
-                            avatar={this.state.profile.avatar}
-                            isAvatarDefault={this.state.isAvatarDefault}
-                            updateAvatar={this.updateAvatar}
+                            photo={this.state.userData.photo}
+                            isPhotoDefault={this.state.isPhotoDefault}
+                            updatePhoto={this.updatePhoto}
                             handleApiFetch={this.handleApiFetch}
+                            cardUrl={this.state.dataUrl}
 
                         />
                         {/* 

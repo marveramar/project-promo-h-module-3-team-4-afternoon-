@@ -1,6 +1,9 @@
+
+
 const ENDPOINT= 'https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/';
 
 const handleApiFetch=(datosObjeto)=>{
+  return(
     
     fetch(ENDPOINT, {
     method: 'POST',
@@ -10,7 +13,9 @@ const handleApiFetch=(datosObjeto)=>{
     },
   })
     .then(response => response.json())
-    .then(res => console.log(res))
+  )
+  
+  
 }
 
 
