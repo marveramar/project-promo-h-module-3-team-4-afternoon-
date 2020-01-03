@@ -29,7 +29,8 @@ class Home extends React.Component {
             },
             isPhotoDefault: true,
             errors: {},
-            dataUrl: ''
+            dataUrl: '',
+            paletteValue: '4'
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -37,6 +38,7 @@ class Home extends React.Component {
         this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
+        this.handlePaletteChange = this.handlePaletteChange.bind(this);
     }
 
 
@@ -46,6 +48,30 @@ class Home extends React.Component {
         this.setState({ userData })
         localStorage.setItem('userData', JSON.stringify(userData))
 
+    }
+
+    handlePaletteChange(checkedPaletteValue) {
+        this.setState((prevState, props) => {
+            let newPaletteValue = prevState.paletteValue;
+            let newCardInfo = prevState.userData;
+            if (checkedPaletteValue === '1') {
+                newPaletteValue = '1'
+            }
+            if (checkedPaletteValue === '2') {
+                newPaletteValue = '2'
+            }
+            if (checkedPaletteValue === '3') {
+                newPaletteValue = '3'
+            }
+            if (checkedPaletteValue === '4') {
+                newPaletteValue = '4'
+            }
+            return {
+                paletteValue: newPaletteValue,
+                userData: { ...newCardInfo, "palette": newPaletteValue }
+            }
+        }
+        )
     }
 
 
@@ -121,8 +147,7 @@ class Home extends React.Component {
                         photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
-
-
+                        paletteValue={this.state.paletteValue}
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <Collapsable
@@ -135,6 +160,8 @@ class Home extends React.Component {
                             handleApiFetch={this.handleApiFetch}
                             cardUrl={this.state.dataUrl}
                             data={this.state.userData}
+                            handlePaletteChange={this.handlePaletteChange}
+                            paletteValue={this.state.paletteValue}
 
                         />
                         {/* 

@@ -49,6 +49,8 @@ class Collapsable extends React.Component {
                                 <div ref="itemRef">
                                     {index === 0 ? (<Palette
                                         rotateArrow={this.rotateArrow()}
+                                        handlePaletteChange={this.props.handlePaletteChange}
+                                        paletteValue={this.props.paletteValue}
                                     />
 
                                     ) : null}
@@ -60,7 +62,7 @@ class Collapsable extends React.Component {
                                         isPhotoDefault={this.props.isPhotoDefault}
                                         updatePhoto={this.props.updatePhoto}
                                         handlerOpacityLink={this.props.handlerOpacityLink}
-                                        
+
                                     />) : null}
                                     {index === 2 ? (<SharedForm
                                         handleApiFetch={this.props.handleApiFetch}

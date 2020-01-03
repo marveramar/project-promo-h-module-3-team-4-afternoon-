@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import Fonts from './FontsDesign';
 
 class Palette extends Component {
+    constructor(props) {
+        super(props)
+        this.handlePaletteChange = this.handlePaletteChange.bind(this)
+    }
+
+    handlePaletteChange(ev) {
+        let checkedOption = ev.target.value;
+        this.props.handlePaletteChange(checkedOption);
+    }
+
     render() {
         return (
             // <fieldset className="fieldset fieldset__design">
@@ -15,7 +25,7 @@ class Palette extends Component {
                     <div className="color_palettes">
                         <div className="palette-container">
                             <label htmlFor="fieldset__design--palette-4"></label>
-                            <input type="radio" name="color-palette" id="fieldset__design--palette-4" className="palette-4" value="4" />
+                            <input type="radio" name="color-palette" id="fieldset__design--palette-4" className="palette-4" value="4" onChange={this.handlePaletteChange} checked={this.props.paletteValue === '4' ? true : false} />
                             <ul className="color_theme">
                                 <li className="palette4-c1 item"></li>
                                 <li className="palette4-c2 item"></li>
@@ -24,7 +34,7 @@ class Palette extends Component {
                         </div>
                         <div className="palette-container">
                             <label htmlFor="fieldset__design--palette-1"></label>
-                            <input type="radio" name="color-palette" id="fieldset__design--palette-1" className="palette-1" value="1" />
+                            <input type="radio" name="color-palette" id="fieldset__design--palette-1" className="palette-1" value="1" onChange={this.handlePaletteChange} checked={this.props.paletteValue === '1' ? true : false} />
                             <ul className="color_theme">
                                 <li className="palette1-c1 item"></li>
                                 <li className="palette1-c2 item"></li>
@@ -34,7 +44,7 @@ class Palette extends Component {
                         <div className="palette-container">
                             <label htmlFor="fieldset__design--palette-2"></label>
                             <input type="radio" name="color-palette" id="fieldset__design--palette-2" className="palette-2"
-                                value="2" />
+                                value="2" onChange={this.handlePaletteChange} checked={this.props.paletteValue === '2' ? true : false} />
                             <ul className="color_theme">
                                 <li className="palette2-c1 item"></li>
                                 <li className="palette2-c2 item"></li>
@@ -44,7 +54,7 @@ class Palette extends Component {
                         <div className="palette-container">
                             <label htmlFor="fieldset__design--palette-3"></label>
                             <input type="radio" name="color-palette" id="fieldset__design--palette-3" className="palette-3"
-                                value="3" />
+                                value="3" onChange={this.handlePaletteChange} checked={this.props.paletteValue === '3' ? true : false} />
                             <ul className="color_theme">
                                 <li className="palette3-c1 item"></li>
                                 <li className="palette3-c2 item"></li>

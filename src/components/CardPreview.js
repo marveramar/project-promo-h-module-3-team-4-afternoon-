@@ -2,11 +2,26 @@ import React from 'react';
 import Profile from './Profile';
 
 const Cardpreview = props => {
-    const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = props;
+    const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard, paletteValue } = props;
+
+    const selectDesign = (props) => {
+        if (paletteValue === '4') {
+            return 'design-color4'
+        }
+        if (paletteValue === '1') {
+            return 'design-color1'
+        }
+        if (paletteValue === '2') {
+            return 'design-color2'
+        }
+        if (paletteValue === '3') {
+            return 'design-color3'
+        }
+    }
 
     return (
         <section className="preview">
-            <div className="preview_card-container">
+            <div className={`preview_card-container ${selectDesign()}`}>
                 <button id="buttonReset" className="reset" onClick={props.handleReset}><i className="far fa-trash-alt"></i>reset</button>
                 <div className="preview_card">
                     <div className="preview_card-head">
