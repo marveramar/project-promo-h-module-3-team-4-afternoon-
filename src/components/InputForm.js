@@ -1,25 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import GetAvatar from './GetAvatar';
 
 
+class Input extends React.Component {
 
-class Input extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+
         this.onChangeHandler = this.onChangeHandler.bind(this)
 
     }
 
+
     onChangeHandler(event) {
-        this.props.onChangeHandler(event.target.name, event.target.value)
+        this.props.onChangeHandler(event.target.name, event.target.value);
+
     }
 
 
-
     render() {
-
+        const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = this.props;
         const userData = this.props.userData;
-
+        console.log(userData)
         return (
             // <fieldset className="fieldset fieldset__fill-out">
             //     <div id="fillInContainer" className="form_title-container">
@@ -27,14 +30,14 @@ class Input extends Component {
             //         <span id="arrowFillIn"><i className="fas fa-chevron-down"></i></span>
             //     </div>
             <div className="fill-in" id="fillIn">
-                <label className="input_label" htmlFor="name">Name*</label>
+                <label className="input_label" htmlFor="name">Nombre completo*</label>
                 <input
                     id="name"
                     name="name"
                     className="input"
                     placeholder="Nombre Apellido"
                     type="text"
-                    value={userData}
+                    value={nameCard}
                     onChange={this.onChangeHandler}
                 />
                 <span className="error-alert" id="errorAlert"></span>
@@ -53,12 +56,12 @@ class Input extends Component {
 
                 <label className="input_label" htmlFor="photo">Imagen de perfil *</label>
                 {/* <input id="photo" type="file" name="photo" className="photo js__profile-upload-btn" value="" required></input>
-                <div className="add-image-container">
+            <div className="add-image-container">
 
-                    <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
-                    <div className="preview-image js__profile-preview"></div>
-                    <span className="error-alert" id="errorAlert"></span>
-                </div> */}
+                <button type="button" className="btn-add-image js__profile-trigger">Añadir imagen</button>
+                <div className="preview-image js__profile-preview"></div>
+                <span className="error-alert" id="errorAlert"></span>
+            </div>  */}
 
                 <GetAvatar
                     photo={this.props.photo}
@@ -116,17 +119,10 @@ class Input extends Component {
                 <span className="error-alert" id="errorAlert"></span>
 
 
-            </div>
+            </div >
 
             // </fieldset>
         );
     }
 }
-
 export default Input;
-
-
-
-
-
-

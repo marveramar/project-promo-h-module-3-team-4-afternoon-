@@ -1,5 +1,4 @@
 import '../styles/App.scss';
-
 import React from 'react';
 import Header from './Header';
 // import Palette from './PaletteDesign';
@@ -16,6 +15,9 @@ class Home extends React.Component {
         super(props);
         this.state = {
             userData: {
+
+                palette: '',
+                font: '',
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
                 photo: defaultImage,
@@ -27,16 +29,20 @@ class Home extends React.Component {
             isPhotoDefault: true,
             errors: {}
         }
+
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
+
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
+        localStorage.setItem('userData', JSON.stringify(userData))
+
     }
 
 
@@ -53,11 +59,19 @@ class Home extends React.Component {
                 github: ''
             },
         });
+        localStorage.clear()
     }
 
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
+
+    componentDidMount() {
+        const getLocal = JSON.parse(localStorage.getItem('userData'));
+        if (getLocal !== null) {
+            this.setState({ userData: getLocal })
+        }
+    }
     updatePhoto(img) {
         const { userData } = this.state;
         this.setState(prevState => {

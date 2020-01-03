@@ -14,25 +14,14 @@ class Collapsable extends React.Component {
         // this.rotateArrow = this.rotateArrow.bind(this);
     }
 
-    // rotateArrow(event) {
-    //     this.setState((prevState, props) => {
-    //         let nextStyling;
-    //         if (prevState.styling === '') {
-    //             nextStyling = 'rotate';
-    //         } else {
-    //             nextStyling = '';
-    //         }
-    //         return {
-    //             styling: nextStyling
-    //         }
-    //     });
-    // }
 
     render() {
+        let styles = this.state.styling;
+
         return (
             <fieldset className="fieldset fieldset__design">
                 <div className="form_title-container">
-                    {/* <form action="" method="POST" id="card__form"> */}
+
                     <Accordion>
                         {[<div id="designContainer" className="form_title-container">
                             <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
@@ -67,9 +56,8 @@ class Collapsable extends React.Component {
                         }
                         )}
                     </Accordion>
-                    {/* </form> */}
                 </div>
-            </fieldset>
+            </fieldset >
         )
     }
 }
