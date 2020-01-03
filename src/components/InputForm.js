@@ -63,10 +63,10 @@ class Input extends React.Component {
                 <span className="error-alert" id="errorAlert"></span>
             </div>  */}
 
-                < GetAvatar
-                    avatar={this.props.avatar}
-                    isAvatarDefault={this.props.isAvatarDefault}
-                    updateAvatar={this.props.updateAvatar}
+                <GetAvatar
+                    photo={this.props.photo}
+                    isPhotoDefault={this.props.isPhotoDefault}
+                    updatePhoto={this.props.updatePhoto}
                 />
 
                 <div className="email-container">

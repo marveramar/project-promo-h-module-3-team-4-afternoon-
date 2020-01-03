@@ -20,21 +20,19 @@ class Home extends React.Component {
                 font: '',
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
                 github: ''
             },
-            isAvatarDefault: true,
-            profile: {
-                avatar: defaultImage
-            },
+            isPhotoDefault: true,
             errors: {}
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
-        this.updateAvatar = this.updateAvatar.bind(this);
+        this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
     }
 
@@ -54,6 +52,7 @@ class Home extends React.Component {
             userData: {
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
@@ -66,19 +65,20 @@ class Home extends React.Component {
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
+
     componentDidMount() {
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
     }
-    updateAvatar(img) {
-        const { profile } = this.state;
+    updatePhoto(img) {
+        const { userData } = this.state;
         this.setState(prevState => {
-            const newProfile = { ...profile, avatar: img };
+            const newProfile = { ...userData, photo: img };
             return {
-                profile: newProfile,
-                isAvatarDefault: false
+                userData: newProfile,
+                isPhotoDefault: false
             }
         });
     }
@@ -98,7 +98,7 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
-                        avatar={this.state.profile.avatar}
+                        photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
 
@@ -106,9 +106,9 @@ class Home extends React.Component {
                     <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
-                            avatar={this.state.profile.avatar}
-                            isAvatarDefault={this.state.isAvatarDefault}
-                            updateAvatar={this.updateAvatar}
+                            photo={this.state.userData.photo}
+                            isPhotoDefault={this.state.isPhotoDefault}
+                            updatePhoto={this.updatePhoto}
 
                         />
                         {/* 
