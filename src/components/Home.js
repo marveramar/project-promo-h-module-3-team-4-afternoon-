@@ -9,6 +9,7 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
+import {handleApiFetch} from '../service/ApiFetch'
 
 class Home extends React.Component {
     constructor(props) {
@@ -27,13 +28,15 @@ class Home extends React.Component {
                 github: ''
             },
             isPhotoDefault: true,
-            errors: {}
+            errors: {},
+            dataUrl:''
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
+        this.handleApiFetch= this.handleApiFetch.bind(this);
     }
 
 
@@ -50,6 +53,7 @@ class Home extends React.Component {
         e.preventDefault();
         this.setState({
             userData: {
+                palette: 1,
                 name: 'Nombre Apellido',
                 job: 'Front-end Developer',
                 photo: defaultImage,
@@ -71,6 +75,7 @@ class Home extends React.Component {
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
+        return(getLocal)
     }
     updatePhoto(img) {
         const { userData } = this.state;
@@ -81,6 +86,19 @@ class Home extends React.Component {
                 isPhotoDefault: false
             }
         });
+    }
+
+    handleApiFetch(){
+        const getItem = JSON.parse(localStorage.getItem('userData'));
+        handleApiFetch(getItem)
+        .then(data=>{
+            console.log(data)
+            this.setState({
+                dataUrl: data.cardURL
+            })
+            
+          })
+          
     }
 
 
@@ -101,6 +119,7 @@ class Home extends React.Component {
                         photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
+                        
 
                     ></CardPreview>
                     <form className="form_wrapper" >
@@ -109,6 +128,8 @@ class Home extends React.Component {
                             photo={this.state.userData.photo}
                             isPhotoDefault={this.state.isPhotoDefault}
                             updatePhoto={this.updatePhoto}
+                            handleApiFetch={this.handleApiFetch}
+                            cardUrl={this.state.dataUrl}
 
                         />
                         {/* 
