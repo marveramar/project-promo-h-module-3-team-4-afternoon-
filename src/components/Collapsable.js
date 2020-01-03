@@ -55,9 +55,9 @@ class Collapsable extends React.Component {
                                     {index === 1 ? (<Input
                                         onChangeHandler={this.props.onChangeHandler}
                                         data={this.props.data}
-                                        avatar={this.props.avatar}
-                                        isAvatarDefault={this.props.isAvatarDefault}
-                                        updateAvatar={this.props.updateAvatar}
+                                        photo={this.props.photo}
+                                        isPhotoDefault={this.props.isPhotoDefault}
+                                        updatePhoto={this.props.updatePhoto}
                                         handlerOpacityLink={this.props.handlerOpacityLink}
                                     />) : null}
                                     {index === 2 ? (<SharedForm />) : null}

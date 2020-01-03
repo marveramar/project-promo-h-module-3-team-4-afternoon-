@@ -61,9 +61,9 @@ class Input extends Component {
                 </div> */}
 
                 <GetAvatar
-                    avatar={this.props.avatar}
-                    isAvatarDefault={this.props.isAvatarDefault}
-                    updateAvatar={this.props.updateAvatar}
+                    photo={this.props.photo}
+                    isPhotoDefault={this.props.isPhotoDefault}
+                    updatePhoto={this.props.updatePhoto}
                 />
 
                 <div className="email-container">
