@@ -11,10 +11,17 @@ class Collapsable extends React.Component {
         this.state = {
             styling: ''
         };
-        // this.rotateArrow = this.rotateArrow.bind(this);
+        this.rotateArrow = this.rotateArrow.bind(this);
     }
 
+    rotateArrow() {
+        if (this.state === '') {
+            this.setState({ styling: 'rotate' })
+        } else {
+            this.state = ''
+        }
 
+    }
     render() {
         let styles = this.state.styling;
 
@@ -24,7 +31,7 @@ class Collapsable extends React.Component {
 
                     <Accordion>
                         {[<div id="designContainer" className="form_title-container">
-                            <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
+                            <legend className="form_title"><i onClick={this.rotateArrow} className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
                             <span className="arrowDesign" id="arrowDesign"><i className={"fas fa-chevron-down "}></i></span>
                         </div>, <div id="fillInContainer" className="form_title-container">
                             <legend className="form_title"><i className="far fa-keyboard form_title-icon"></i>RELLENA</legend>
@@ -40,8 +47,13 @@ class Collapsable extends React.Component {
                                 id={index}
                             >
                                 <div ref="itemRef">
-                                    {index === 0 ? (<Palette />) : null}
+                                    {index === 0 ? (<Palette
+                                        rotateArrow={this.rotateArrow()}
+                                    />
+
+                                    ) : null}
                                     {index === 1 ? (<Input
+
                                         onChangeHandler={this.props.onChangeHandler}
                                         data={this.props.data}
                                         photo={this.props.photo}

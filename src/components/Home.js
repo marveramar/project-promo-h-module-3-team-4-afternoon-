@@ -9,7 +9,7 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
-import {handleApiFetch} from '../service/ApiFetch'
+import { handleApiFetch } from '../service/ApiFetch'
 
 class Home extends React.Component {
     constructor(props) {
@@ -19,8 +19,8 @@ class Home extends React.Component {
 
                 palette: '',
                 font: '',
-                name: 'Nombre Apellido',
-                job: 'Front-end Developer',
+                name: '',
+                job: '',
                 photo: defaultImage,
                 email: '',
                 tel: '',
@@ -29,14 +29,14 @@ class Home extends React.Component {
             },
             isPhotoDefault: true,
             errors: {},
-            dataUrl:''
+            dataUrl: ''
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
         this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
-        this.handleApiFetch= this.handleApiFetch.bind(this);
+        this.handleApiFetch = this.handleApiFetch.bind(this);
     }
 
 
@@ -53,9 +53,11 @@ class Home extends React.Component {
         e.preventDefault();
         this.setState({
             userData: {
+
+                font: '',
                 palette: 1,
-                name: 'Nombre Apellido',
-                job: 'Front-end Developer',
+                name: '',
+                job: '',
                 photo: defaultImage,
                 email: '',
                 tel: '',
@@ -71,11 +73,11 @@ class Home extends React.Component {
 
 
     componentDidMount() {
+
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
-        return(getLocal)
     }
     updatePhoto(img) {
         const { userData } = this.state;
@@ -88,17 +90,17 @@ class Home extends React.Component {
         });
     }
 
-    handleApiFetch(){
+    handleApiFetch() {
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
-        .then(data=>{
-            console.log(data)
-            this.setState({
-                dataUrl: data.cardURL
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    dataUrl: data.cardURL
+                })
+
             })
-            
-          })
-          
+
     }
 
 
@@ -119,17 +121,20 @@ class Home extends React.Component {
                         photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
-                        
+
 
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <Collapsable
+                            componentDidMount={this.componentDidMount}
+                            rotateArrow={this.rotateArrow}
                             onChangeHandler={this.onChangeHandler}
                             photo={this.state.userData.photo}
                             isPhotoDefault={this.state.isPhotoDefault}
                             updatePhoto={this.updatePhoto}
                             handleApiFetch={this.handleApiFetch}
                             cardUrl={this.state.dataUrl}
+                            data={this.state.userData}
 
                         />
                         {/* 

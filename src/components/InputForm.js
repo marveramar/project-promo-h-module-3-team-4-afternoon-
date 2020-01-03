@@ -15,13 +15,13 @@ class Input extends React.Component {
 
     onChangeHandler(event) {
         this.props.onChangeHandler(event.target.name, event.target.value);
+        console.log(event.target.value)
 
     }
 
 
     render() {
-        const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = this.props;
-        const userData = this.props.userData;
+        const userData = this.props.data;
         console.log(userData)
         return (
             // <fieldset className="fieldset fieldset__fill-out">
@@ -37,8 +37,9 @@ class Input extends React.Component {
                     className="input"
                     placeholder="Nombre Apellido"
                     type="text"
-                    value={nameCard}
+                    value={userData.name}
                     onChange={this.onChangeHandler}
+
                 />
                 <span className="error-alert" id="errorAlert"></span>
 
@@ -49,7 +50,7 @@ class Input extends React.Component {
                     className="input"
                     type="text"
                     placeholder="Front-end developer"
-                    value={userData}
+                    value={userData.job}
                     onChange={this.onChangeHandler}
                 />
                 <span className="error-alert" id="errorAlert"></span>
@@ -77,7 +78,7 @@ class Input extends React.Component {
                         type="email"
                         name="email"
                         placeholder="nombre.apellido@gmail.com"
-                        value={userData}
+                        value={userData.email}
                         onChange={this.onChangeHandler}
                     />
                     <span className="error-alert" id="errorAlert"></span>
@@ -89,7 +90,7 @@ class Input extends React.Component {
                         placeholder="123456789"
                         name="tel"
                         type="tel"
-                        value={userData}
+                        value={userData.tel}
                         onChange={this.onChangeHandler}
                     />
                     <span className="error-alert" id="errorAlert"></span>
@@ -102,7 +103,7 @@ class Input extends React.Component {
                     className="input"
                     placeholder="nombre de usuaria"
                     type="text"
-                    value={userData}
+                    value={userData.linkedin}
                     onChange={this.onChangeHandler}
                 />
 
@@ -112,7 +113,7 @@ class Input extends React.Component {
                     name="github"
                     className="input"
                     type="text"
-                    value={userData}
+                    value={userData.github}
                     onChange={this.onChangeHandler}
                     placeholder="nombre de usuaria"
                 />
