@@ -105,6 +105,7 @@ class Home extends React.Component {
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <Collapsable
+                            rotateArrow={this.rotateArrow}
                             onChangeHandler={this.onChangeHandler}
                             avatar={this.state.profile.avatar}
                             isAvatarDefault={this.state.isAvatarDefault}
