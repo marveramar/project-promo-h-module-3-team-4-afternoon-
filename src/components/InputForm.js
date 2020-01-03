@@ -18,7 +18,7 @@ class Input extends React.Component {
 
 
     render() {
-
+        const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard } = this.props;
         const userData = this.props.userData;
         console.log(userData)
         return (
@@ -35,7 +35,7 @@ class Input extends React.Component {
                     className="input"
                     placeholder="Nombre Apellido"
                     type="text"
-                    value={userData}
+                    value={nameCard}
                     onChange={this.onChangeHandler}
                 />
                 <span className="error-alert" id="errorAlert"></span>
@@ -52,7 +52,7 @@ class Input extends React.Component {
                 />
                 <span className="error-alert" id="errorAlert"></span>
 
-                <label className="input_label" htmlfor="photo">Imagen de perfil *</label>
+                <label className="input_label" htmlFor="photo">Imagen de perfil *</label>
                 <input
                     id="photo"
                     type="file"

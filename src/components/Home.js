@@ -55,33 +55,18 @@ class Home extends React.Component {
                 github: ''
             },
         });
+        localStorage.clear()
     }
 
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
-    // getLocal(dataLocalStorage) {
-    //     dataLocalStorage = localStorage.getItem('userData');
-    //     if (!dataLocalStorage) {
-    //         return userData
-    //     } else {
-    //         JSON.parse(dataLocalStorage);
-
-    //     }
-    // }
     componentDidMount() {
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
     }
-
-
-
-
-
-
-
 
     render() {
         console.log(this.state)
@@ -104,14 +89,6 @@ class Home extends React.Component {
                     <form className="form_wrapper" >
                         <Collapsable
                             onChangeHandler={this.onChangeHandler}
-                            nameCard={this.state.userData.name}
-                            jobCard={this.getData().job}
-                            phoneCard={this.getData().tel}
-                            emailCard={this.getData().email}
-                            linkedinCard={this.getData().linkedin}
-                            githubCard={this.getData().github}
-                        // getLocal={this.getLocal}
-
                         />
                         {/* 
                         <Palette></Palette>
