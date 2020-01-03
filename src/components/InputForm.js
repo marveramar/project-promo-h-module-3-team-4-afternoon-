@@ -27,7 +27,7 @@ class Input extends Component {
             //         <span id="arrowFillIn"><i className="fas fa-chevron-down"></i></span>
             //     </div>
             <div className="fill-in" id="fillIn">
-                <label className="input_label" htmlFor="name">Name*</label>
+                <label className="input_label" htmlFor="name">Nombre completo*</label>
                 <input
                     id="name"
                     name="name"
