@@ -15,7 +15,7 @@ const Cardpreview = props => {
                     </div>
                     <div className="preview_card-image js__profile-image">
                         <Profile
-                            avatar={props.avatar}
+                            photo={props.photo}
                         />
                     </div>
                     <ul className="preview_card-social">

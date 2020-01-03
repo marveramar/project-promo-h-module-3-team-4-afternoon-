@@ -56,12 +56,16 @@ class Collapsable extends React.Component {
 
                                         onChangeHandler={this.props.onChangeHandler}
                                         data={this.props.data}
-                                        avatar={this.props.avatar}
-                                        isAvatarDefault={this.props.isAvatarDefault}
-                                        updateAvatar={this.props.updateAvatar}
+                                        photo={this.props.photo}
+                                        isPhotoDefault={this.props.isPhotoDefault}
+                                        updatePhoto={this.props.updatePhoto}
                                         handlerOpacityLink={this.props.handlerOpacityLink}
+                                        
                                     />) : null}
-                                    {index === 2 ? (<SharedForm />) : null}
+                                    {index === 2 ? (<SharedForm
+                                        handleApiFetch={this.props.handleApiFetch}
+                                        cardUrl={this.props.cardUrl}
+                                    />) : null}
                                 </div>
                             </AccordionItem>
                             );

@@ -27,7 +27,7 @@ class GetAvatar extends React.Component {
 
     getImage() {
         const image = this.fr.result;
-        this.props.updateAvatar(image);
+        this.props.updatePhoto(image);
     }
 
     getPreview(isDefault, image) {
@@ -35,23 +35,23 @@ class GetAvatar extends React.Component {
     }
 
     render() {
-        const { isAvatarDefault, avatar } = this.props;
+        const { isPhotoDefault, photo } = this.props;
         return (
             <div className="add-image-container">
                 <button className="btn-add-image js__profile-trigger" type="button" onClick={this.handleFilePicker}>Añadir imagen</button>
 
                 <input type="file" ref={this.myFileField} className="photo js__profile-upload-btn" onChange={this.uploadImage} />
 
-                <div className="preview-image js__profile-preview" style={this.getPreview(isAvatarDefault, avatar)}></div>
+                <div className="preview-image js__profile-preview" style={this.getPreview(isPhotoDefault, photo)}></div>
             </div>
         );
     }
 }
 
 GetAvatar.propTypes = {
-    isAvatarDefault: PropTypes.bool.isRequired,
-    avatar: PropTypes.string.isRequired,
-    updateAvatar: PropTypes.func.isRequired
+    isPhotoDefault: PropTypes.bool.isRequired,
+    photo: PropTypes.string.isRequired,
+    updatePhoto: PropTypes.func.isRequired
 };
 
 export default GetAvatar;

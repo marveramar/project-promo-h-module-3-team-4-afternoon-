@@ -30,7 +30,7 @@ class Input extends React.Component {
             //         <span id="arrowFillIn"><i className="fas fa-chevron-down"></i></span>
             //     </div>
             <div className="fill-in" id="fillIn">
-                <label className="input_label" htmlFor="name">Name*</label>
+                <label className="input_label" htmlFor="name">Nombre completo*</label>
                 <input
                     id="name"
                     name="name"
@@ -64,10 +64,10 @@ class Input extends React.Component {
                 <span className="error-alert" id="errorAlert"></span>
             </div>  */}
 
-                < GetAvatar
-                    avatar={this.props.avatar}
-                    isAvatarDefault={this.props.isAvatarDefault}
-                    updateAvatar={this.props.updateAvatar}
+                <GetAvatar
+                    photo={this.props.photo}
+                    isPhotoDefault={this.props.isPhotoDefault}
+                    updatePhoto={this.props.updatePhoto}
                 />
 
                 <div className="email-container">

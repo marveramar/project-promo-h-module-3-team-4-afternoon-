@@ -9,6 +9,7 @@ import CardPreview from './CardPreview';
 import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
+import { handleApiFetch } from '../service/ApiFetch'
 
 class Home extends React.Component {
     constructor(props) {
@@ -20,22 +21,22 @@ class Home extends React.Component {
                 font: '',
                 name: '',
                 job: '',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
                 github: ''
             },
-            isAvatarDefault: true,
-            profile: {
-                avatar: defaultImage
-            },
-            errors: {}
+            isPhotoDefault: true,
+            errors: {},
+            dataUrl: ''
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.getData = this.getData.bind(this);
-        this.updateAvatar = this.updateAvatar.bind(this);
+        this.updatePhoto = this.updatePhoto.bind(this);
         this.handleReset = this.handleReset.bind(this);
+        this.handleApiFetch = this.handleApiFetch.bind(this);
     }
 
 
@@ -52,10 +53,12 @@ class Home extends React.Component {
         e.preventDefault();
         this.setState({
             userData: {
-                palette: '',
+
                 font: '',
-                name: 'Nombre Apellido',
-                job: 'Front-end Developer',
+                palette: 1,
+                name: '',
+                job: '',
+                photo: defaultImage,
                 email: '',
                 tel: '',
                 linkedin: '',
@@ -68,23 +71,36 @@ class Home extends React.Component {
 
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
+
     componentDidMount() {
 
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({ userData: getLocal })
         }
-
     }
-    updateAvatar(img) {
-        const { profile } = this.state;
+    updatePhoto(img) {
+        const { userData } = this.state;
         this.setState(prevState => {
-            const newProfile = { ...profile, avatar: img };
+            const newProfile = { ...userData, photo: img };
             return {
-                profile: newProfile,
-                isAvatarDefault: false
+                userData: newProfile,
+                isPhotoDefault: false
             }
         });
+    }
+
+    handleApiFetch() {
+        const getItem = JSON.parse(localStorage.getItem('userData'));
+        handleApiFetch(getItem)
+            .then(data => {
+                console.log(data)
+                this.setState({
+                    dataUrl: data.cardURL
+                })
+
+            })
+
     }
 
 
@@ -102,9 +118,10 @@ class Home extends React.Component {
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
-                        avatar={this.state.profile.avatar}
+                        photo={this.state.userData.photo}
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
+
 
                     ></CardPreview>
                     <form className="form_wrapper" >
@@ -112,9 +129,11 @@ class Home extends React.Component {
                             componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
                             onChangeHandler={this.onChangeHandler}
-                            avatar={this.state.profile.avatar}
-                            isAvatarDefault={this.state.isAvatarDefault}
-                            updateAvatar={this.updateAvatar}
+                            photo={this.state.userData.photo}
+                            isPhotoDefault={this.state.isPhotoDefault}
+                            updatePhoto={this.updatePhoto}
+                            handleApiFetch={this.handleApiFetch}
+                            cardUrl={this.state.dataUrl}
                             data={this.state.userData}
 
                         />
