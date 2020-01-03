@@ -8,9 +8,11 @@ import Input from './InputForm';
 class Collapsable extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            styling: ''
-        };
+
+        // this.state = {
+        //     styling: ''
+        // };
+
         // this.rotateArrow = this.rotateArrow.bind(this);
     }
 
@@ -51,7 +53,11 @@ class Collapsable extends React.Component {
                                     id={index}
                                 >
                                     <div ref="itemRef">
-                                        {index === 0 ? (<Palette />) : null}
+                                        {index === 0 ? (<Palette
+
+                                            handlePaletteChange={this.props.handlePaletteChange}
+                                            paletteValue={this.props.paletteValue}
+                                        />) : null}
                                         {index === 1 ? (<Input />) : null}
                                         {index === 2 ? (<SharedForm />) : null}
                                     </div>

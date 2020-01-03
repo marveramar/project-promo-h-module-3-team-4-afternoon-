@@ -1,0 +1,65 @@
+.design-color1{
+
+    .preview_card-head {
+        border-color: $dirty-blue;
+    }
+    .preview_card-name {
+        color: $dark-green-blue;
+    }
+    .preview_card-job {
+        color:$hospital-green;
+    }
+
+    .preview_card-social .item_btn  {
+        color:$dark-green-blue;
+        border-color:$hospital-green;
+        
+    }
+}
+
+.design-color2 {
+
+    .preview_card-head {
+        border-color:$rusty-red;
+    }
+    .preview_card-name {
+        color:$dried-blood;
+    }
+    .preview_card-job {
+        color:$dried-blood;
+    }
+    .preview_card-social .item_btn {
+        color:$tomato;
+        border-color:$rusty-red;
+    }
+}
+.design-color3 {
+    .preview_card-head {
+        border-color:$faded-orange;
+    }
+    .preview_card-name {
+        color:$slate;
+    }
+    .preview_card-job {
+        color:$slate;
+    }
+    .preview_card-social .item_btn {
+        color:$slate;
+        border-color:$faded-orange;
+    }
+}
+.design-color4 {
+    .preview_card-head {
+        border-color:$jungle-yellow;
+    }
+    .preview_card-name {
+        color:$jungle-green;
+    }
+    .preview_card-job {
+        color:$jungle-green;
+    }
+    .preview_card-social .item_btn {
+        color:$jungle-orange;
+        border-color:$jungle-green
+    }
+}
