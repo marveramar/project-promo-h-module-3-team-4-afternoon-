@@ -10,6 +10,7 @@ import AppFooter from './Footer';
 import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
 import { handleApiFetch } from '../service/ApiFetch'
+import NewCollapsible from './NewCollapsible';
 
 class Home extends React.Component {
     constructor(props) {
@@ -150,7 +151,7 @@ class Home extends React.Component {
                         paletteValue={this.state.paletteValue}
                     ></CardPreview>
                     <form className="form_wrapper" >
-                        <Collapsable
+                        <NewCollapsible
                             componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
                             onChangeHandler={this.onChangeHandler}

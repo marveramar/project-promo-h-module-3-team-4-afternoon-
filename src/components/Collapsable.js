@@ -9,21 +9,18 @@ class Collapsable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            styling: ''
+            isRotate :false
         };
         this.rotateArrow = this.rotateArrow.bind(this);
     }
 
-    rotateArrow() {
-        if (this.state === '') {
-            this.setState({ styling: 'rotate' })
-        } else {
-            this.state = ''
-        }
+    rotateArrow(event) {
+        this.setState({
+            isRotate: true
+        })
 
     }
     render() {
-        let styles = this.state.styling;
 
         return (
             <fieldset className="fieldset fieldset__design">
@@ -31,8 +28,7 @@ class Collapsable extends React.Component {
 
                     <Accordion>
                         {[<div id="designContainer" className="form_title-container">
-                            <legend className="form_title"><i onClick={this.rotateArrow} className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
-                            <span className="arrowDesign" id="arrowDesign"><i className={"fas fa-chevron-down "}></i></span>
+                        <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend><span className="arrowDesign" id="arrowDesign"><i className={`fas fa-chevron-down ${this.state.isRotate !== false ? 'rotate': ''}`}></i></span>
                         </div>, <div id="fillInContainer" className="form_title-container">
                             <legend className="form_title"><i className="far fa-keyboard form_title-icon"></i>RELLENA</legend>
                             <span id="arrowFillIn"><i className="fas fa-chevron-down"></i></span>
@@ -48,12 +44,11 @@ class Collapsable extends React.Component {
                             >
                                 <div ref="itemRef">
                                     {index === 0 ? (<Palette
-                                        rotateArrow={this.rotateArrow()}
                                         handlePaletteChange={this.props.handlePaletteChange}
                                         paletteValue={this.props.paletteValue}
                                     />
 
-                                    ) : null}
+                                    ) : null && Palette !== null? this.state.isRotate ===true: this.state.isRotate ===false}
                                     {index === 1 ? (<Input
 
                                         onChangeHandler={this.props.onChangeHandler}
