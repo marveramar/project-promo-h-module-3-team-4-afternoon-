@@ -5,6 +5,7 @@ class Palette extends Component {
     constructor(props) {
         super(props)
         this.handlePaletteChange = this.handlePaletteChange.bind(this)
+        
     }
 
     handlePaletteChange(ev) {
@@ -12,14 +13,16 @@ class Palette extends Component {
         this.props.handlePaletteChange(checkedOption);
     }
 
+    
+
     render() {
         return (
-            // <fieldset className="fieldset fieldset__design">
-            //     <div id="designContainer" className="form_title-container">
-            //         <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
-            //         <span className="arrowDesign" id="arrowDesign"><i className="fas fa-chevron-down"></i></span>
-            //     </div>
-            <div className="design" id="design">
+            <fieldset className="fieldset fieldset__design">
+               <div  data-id="designContainer" onClick={this.props.handleCollapsible} id="designContainer" className="form_title-container">
+                   <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
+                  <span className="arrowDesign" id="arrowDesign"><i className={`fas fa-chevron-down ${this.props.isVisible === 'designContainer' ? 'rotate' : ''}`}></i></span>
+               </div>
+            <div  className={`design  ${this.props.isVisible === 'designContainer' ? '' : 'hidden'}`} id="design">
                 <div className="color">
                     <p className="color_title">COLORES</p>
                     <div className="color_palettes">
@@ -65,7 +68,7 @@ class Palette extends Component {
                 </div>
                 <Fonts />
             </div>
-            // </fieldset>
+        </fieldset>
         )
     }
 }

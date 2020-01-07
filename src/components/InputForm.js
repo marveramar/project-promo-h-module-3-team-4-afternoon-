@@ -24,12 +24,12 @@ class Input extends React.Component {
         const userData = this.props.data;
         console.log(userData)
         return (
-            // <fieldset className="fieldset fieldset__fill-out">
-            //     <div id="fillInContainer" className="form_title-container">
-            //         <legend className="form_title"><i className="far fa-keyboard form_title-icon"></i>RELLENA</legend>
-            //         <span id="arrowFillIn"><i className="fas fa-chevron-down"></i></span>
-            //     </div>
-            <div className="fill-in" id="fillIn">
+            <fieldset className="fieldset fieldset__fill-out">
+              <div  data-id="fillInContainer" onClick={this.props.handleCollapsible} id="fillInContainer" className="form_title-container">
+                 <legend className="form_title"><i className="far fa-keyboard form_title-icon"></i>RELLENA</legend>
+                      <span id="arrowFillIn"><i className={`fas fa-chevron-down ${this.props.isVisible === 'fillInContainer' ? 'rotate' : ''}`}></i></span>
+                   </div>
+            <div   className={`fill-in ${this.props.isVisible === 'fillInContainer' ? '' : 'hidden'}`} id="fillIn">
                 <label className="input_label" htmlFor="name">Nombre completo*</label>
                 <input
                     id="name"
@@ -122,7 +122,7 @@ class Input extends React.Component {
 
             </div >
 
-            // </fieldset>
+            </fieldset>
         );
     }
 }
