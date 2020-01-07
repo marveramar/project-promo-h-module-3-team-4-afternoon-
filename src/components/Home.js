@@ -81,13 +81,14 @@ class Home extends React.Component {
     }
     updatePhoto(img) {
         const { userData } = this.state;
+        const newProfile = { ...userData, photo: img };
         this.setState(prevState => {
-            const newProfile = { ...userData, photo: img };
             return {
                 userData: newProfile,
                 isPhotoDefault: false
             }
         });
+        localStorage.setItem('userData', JSON.stringify(newProfile))
     }
 
     handleApiFetch() {
