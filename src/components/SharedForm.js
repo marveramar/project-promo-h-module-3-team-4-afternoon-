@@ -1,45 +1,45 @@
 import React from 'react';
 
-class SharedForm extends React.Component{
-    constructor(props){
+class SharedForm extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
-            
+        this.state = {
+
         }
 
-        this.handleApiFetch= this.handleApiFetch.bind(this)
+        this.handleApiFetch = this.handleApiFetch.bind(this)
     }
 
-handleApiFetch=(event)=>{
+    handleApiFetch = (event) => {
         event.preventDefault();
         this.props.handleApiFetch();
     }
-    render(){
+    render() {
         return (
-             <fieldset className="fieldset fieldset__share">
-             <div  data-id="shareContainer" onClick={this.props.handleCollapsible} id="shareContainer" className="form_title-container">
-                   <legend className="form_title"><i className="fas fa-share-alt form_title-icon"></i>COMPARTE</legend>
+            <fieldset className="fieldset fieldset__share">
+                <div data-id="shareContainer" onClick={this.props.handleCollapsible} id="shareContainer" className="form_title-container">
+                    <legend className="form_title"><i className="fas fa-share-alt form_title-icon"></i>COMPARTE</legend>
                     <span id="arrowShare"><i className={`fas fa-chevron-down ${this.props.isVisible === 'shareContainer' ? 'rotate' : ''}`}></i></span>
-                 </div>
-            <div className={`share  ${this.props.isVisible === 'shareContainer' ? '' : 'hidden'}`} id="share">
-                <div className="create_card">
-                    <button onClick={this.handleApiFetch} type="submit" value="submit" id="createCardButton" className="create_card-btn"><i
-                        className="far fa-address-card"> CREAR TARJETA</i></button>
-                    <span className="error-message errorEmail">*Faltan campos por completar*</span>
                 </div>
-                <div className="twitter" id="twitterContainer">
-        <span className="twitter-message" id="twitterMessage">La tarjeta ha sido creada:</span>       <a href={this.props.cardUrl} target="_blank"> {this.props.cardUrl}</a>
+                <div className={`share  ${this.props.isVisible === 'shareContainer' ? '' : 'hidden'}`} id="share">
+                    <div className="create_card">
+                        <button onClick={this.handleApiFetch} disabled={this.props.disabled} type="submit" value="submit" id="createCardButton" className="create_card-btn"><i
+                            className="far fa-address-card"> CREAR TARJETA</i></button>
+                        <span className="error-message errorEmail">*Faltan campos por completar*</span>
+                    </div>
+                    <div className="twitter" id="twitterContainer">
+                        <span className="twitter-message" id="twitterMessage">La tarjeta ha sido creada:</span>       <a href={this.props.cardUrl} target="_blank"> {this.props.cardUrl}</a>
 
 
-                    <a href="" className="twitter-btn" id="twitterBtn" target="_blank"><i className="fab fa-twitter"></i> Compartir en twitter</a>
-                    <a href="" className="linkedin-btn" id="linkedInBtn" target="_blank"><i className="fab fa-linkedin"></i> Compartir en linkedIn</a>
+                        <a href="" className="twitter-btn" id="twitterBtn" target="_blank"><i className="fab fa-twitter"></i> Compartir en twitter</a>
+                        <a href="" className="linkedin-btn" id="linkedInBtn" target="_blank"><i className="fab fa-linkedin"></i> Compartir en linkedIn</a>
+                    </div>
                 </div>
-            </div>
-        </fieldset>
+            </fieldset>
 
         )
 
-        }
+    }
 
 
 }

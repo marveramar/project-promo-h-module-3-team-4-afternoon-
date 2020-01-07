@@ -24,14 +24,15 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
             isPhotoDefault: true,
             errors: {},
             dataUrl: '',
-            paletteValue: '4'
+            paletteValue: '4',
+            validation: [{ name: 'maria', job: 'developer', email: 'maria@person.com', phone: 684975012, linkedin: 'mariafernandez', github: 'mariafdez' }]
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -40,13 +41,16 @@ class Home extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.validate = this.validate.bind(this);
     }
 
 
-    onChangeHandler = (name, value) => {
-        let { userData } = this.state;
+    onChangeHandler = (name, value, error) => {
+        let { userData, errors } = this.state;
         userData[name] = value;
-        this.setState({ userData })
+        errors[name] = error;
+        this.setState({ userData, errors })
         localStorage.setItem('userData', JSON.stringify(userData))
 
     }
@@ -87,7 +91,7 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
@@ -118,6 +122,42 @@ class Home extends React.Component {
         localStorage.setItem('userData', JSON.stringify(newProfile))
     }
 
+    onFormSubmit(evt) {
+        const validation = [...this.state.validation];
+        const person = this.state.userData;
+        evt.preventDefault();
+
+        if (this.validate()) return;
+
+        this.setState({
+            validation: validation.concat(person),
+            userData: {
+                name: '',
+                job: '',
+                email: '',
+                phone: '',
+                linkedin: '',
+                github: ''
+            }
+        })
+    }
+
+    validate() {
+        const person = this.state.userData;
+        const errors = this.state.errors;
+        const errMessages = Object.keys(errors).filter(k => errors[k]);
+
+        if (!person.name) return true;
+        if (!person.job) return true;
+        if (!person.email) return true;
+        if (!person.phone) return true;
+        if (!person.linkedin) return true;
+        if (!person.github) return true;
+        if (errMessages.length) return true;
+
+        return false;
+    }
+
     handleApiFetch() {
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
@@ -126,9 +166,7 @@ class Home extends React.Component {
                 this.setState({
                     dataUrl: data.cardURL
                 })
-
             })
-
     }
 
 
@@ -142,7 +180,7 @@ class Home extends React.Component {
                     <CardPreview
                         nameCard={this.getData().name}
                         jobCard={this.getData().job}
-                        phoneCard={this.getData().tel}
+                        phoneCard={this.getData().phone}
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
@@ -151,7 +189,7 @@ class Home extends React.Component {
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
                     ></CardPreview>
-                    <form className="form_wrapper" >
+                    <form className="form_wrapper" onSubmit={this.onFormSubmit}>
                         <NewCollapsible
                             componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
@@ -164,6 +202,7 @@ class Home extends React.Component {
                             data={this.state.userData}
                             handlePaletteChange={this.handlePaletteChange}
                             paletteValue={this.state.paletteValue}
+                            disabled={this.validate()}
 
                         />
                         {/* 
