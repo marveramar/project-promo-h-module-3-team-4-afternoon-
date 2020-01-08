@@ -55,6 +55,8 @@ class NewCollapsible extends React.Component{
                 cardUrl={this.props.cardUrl}
                 handleCollapsible ={this.handleCollapsible}
                 isVisible ={this.state.isVisible}
+                isLoading={this.props.isLoading}
+                isError={this.props.isError}
                 />
             </React.Fragment>
 
