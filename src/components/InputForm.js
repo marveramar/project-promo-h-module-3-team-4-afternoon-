@@ -86,11 +86,11 @@ class Input extends React.Component {
                 <div className="phone-container">
                     <label className="input_label" htmlFor="tel">Teléfono</label>
                     <input
-                        id="tel" className="input"
+                        id="phone" className="input"
                         placeholder="123456789"
-                        name="tel"
+                        name="phone"
                         type="tel"
-                        value={userData.tel}
+                        value={userData.phone}
                         onChange={this.onChangeHandler}
                     />
                     <span className="error-alert" id="errorAlert"></span>
@@ -107,7 +107,7 @@ class Input extends React.Component {
                     onChange={this.onChangeHandler}
                 />
 
-                <label className="input_label" htmlFor="tel">Github</label>
+                <label className="input_label" htmlFor="github">Github</label>
                 <input
                     id="github"
                     name="github"
