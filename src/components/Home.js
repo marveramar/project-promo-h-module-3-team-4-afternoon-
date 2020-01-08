@@ -1,13 +1,8 @@
 import '../styles/App.scss';
 import React from 'react';
 import Header from './Header';
-// import Palette from './PaletteDesign';
-// import Fonts from './FontsDesign';
 import CardPreview from './CardPreview';
-// import SharedForm from './SharedForm';
-// import Input from './InputForm';
 import AppFooter from './Footer';
-import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
 import { handleApiFetch } from '../service/ApiFetch'
 import NewCollapsible from './NewCollapsible';
@@ -29,9 +24,11 @@ class Home extends React.Component {
                 github: ''
             },
             isPhotoDefault: true,
-            errors: {},
             dataUrl: '',
-            paletteValue: '4'
+            paletteValue: '4',
+            isDisabled: true,
+            errorEmail: '',
+            errorPhone: ''
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -40,6 +37,51 @@ class Home extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
+        this.validationHandler = this.validationHandler.bind(this);
+        this.validationText = this.validationText.bind(this);
+        this.validationEmail = this.validationEmail.bind(this);
+        this.validationPhone = this.validationPhone.bind(this);
+
+
+    }
+
+
+
+
+    validationHandler() {
+        if (!this.validationText() || !this.validationEmail() || !this.validationPhone()) {
+            this.setState({ isDisabled: true })
+        } else {
+            this.setState({ isDisabled: false })
+        }
+    }
+
+    validationText() {
+        if (!this.state.userData.name || !this.state.userData.job || !this.state.userData.linkedin || !this.state.userData.github) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    validationEmail() {
+        if (this.state.userData.email === '' || !this.state.userData.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+            this.setState({ errorEmail: 'Introducir email válido' })
+            return false
+        } else {
+            this.setState({ errorEmail: '' })
+            return true
+        }
+    }
+
+    validationPhone() {
+        if (!this.state.userData.phone.match(/^[0-9]{9}/)) {
+            this.setState({ errorPhone: 'Introduce un teléfono válido' })
+            return false
+        } else {
+            this.setState({ errorPhone: '' })
+            return true
+        }
     }
 
 
@@ -48,6 +90,7 @@ class Home extends React.Component {
         userData[name] = value;
         this.setState({ userData })
         localStorage.setItem('userData', JSON.stringify(userData))
+        this.validationHandler()
 
     }
 
@@ -99,6 +142,7 @@ class Home extends React.Component {
     getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
 
 
+
     componentDidMount() {
 
         const getLocal = JSON.parse(localStorage.getItem('userData'));
@@ -131,6 +175,11 @@ class Home extends React.Component {
 
     }
 
+    onSubmitHandler(e) {
+        e.preventDefault()
+        this.validationHandler()
+    }
+
 
     render() {
         console.log(this.state)
@@ -151,7 +200,7 @@ class Home extends React.Component {
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
                     ></CardPreview>
-                    <form className="form_wrapper" >
+                    <form className="form_wrapper" onSubmit={this.onSubmitHandler}>
                         <NewCollapsible
                             componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
@@ -164,16 +213,11 @@ class Home extends React.Component {
                             data={this.state.userData}
                             handlePaletteChange={this.handlePaletteChange}
                             paletteValue={this.state.paletteValue}
+                            errorEmail={this.state.errorEmail}
+                            errorPhone={this.state.errorPhone}
+                            isDisabled={this.state.isDisabled}
 
                         />
-                        {/* 
-                        <Palette></Palette>
-                        <Fonts></Fonts>
-                        <Input
-                            onChange={this.eventInput}
-                            data={this.state}
-                        ></Input>
-                        <SharedForm></SharedForm>*/}
                     </form>
                 </main>
                 <AppFooter></AppFooter>
