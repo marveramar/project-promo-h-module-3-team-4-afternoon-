@@ -1,0 +1,209 @@
+.form_wrapper{
+    margin: 0px 20px;
+    align-self: center;
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    @include for-tablet-up{
+        margin: 0;
+        width: 400px;
+        margin-block-end: auto;
+        padding-right: 30px;  
+    }
+}
+.fieldset{
+    border-bottom: 1px solid $white-two;
+    
+}
+.form_title-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.react-sanfona{
+    width: 320px;
+}
+.form_title{
+    @include text-open-18-600;
+    color: $gunmetal;
+    margin: 12px 0;
+
+    &-icon{
+        color: $dull-orange;
+        margin-right: 10px;
+    }
+}
+
+.fa-chevron-down{
+    color: $gunmetal;
+}
+
+.color, .fonts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &_title{
+        @include text-open-14;
+        color: $gunmetal;
+    }
+}
+.color_theme{
+    display: inline-flex;
+    .item{
+        width: 30px;
+        height: 25px;
+        display: inline-block;
+    }
+}
+.palette-container{
+    padding-bottom: 10px;
+}
+.font_families{
+    display: flex;
+    flex-direction: column; 
+}
+.font-container{
+    padding: 10px 0 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-self: flex-start;
+}
+#fieldset__design--{
+    &palette-1, &palette-2, &palette-3, &palette-4{
+        vertical-align: 30%;
+    }
+}
+.font-montserrat{
+    @include text-montserrat-16-400;
+    margin-left: 5px;
+}
+.font-cherry{
+    @include text-cherry-16-400;
+    margin-left: 5px;
+}
+.font-kalam{
+    @include text-kalam-16-400;
+    margin-left: 5px;
+}
+#github {
+    margin-bottom: 34px;
+}
+
+.palette1-{
+    &c1{background-color: $dark-green-blue;}
+    &c2{background-color: $dirty-blue;}
+    &c3{background-color: $hospital-green;}
+}
+.palette2-{
+    &c1{background-color: $dried-blood;}
+    &c2{background-color: $rusty-red;}
+    &c3{background-color: $tomato;}
+}
+.palette3-{
+    &c1{background-color: $slate;}
+    &c2{background-color: $faded-orange;}
+    &c3{background-color: $light-grey-blue;}
+}
+.palette4-{
+    &c1{background-color: $jungle-green;}
+    &c2{background-color: $jungle-yellow;}
+    &c3{background-color: $jungle-orange;}
+}
+
+.design-color1{
+
+    .preview_card-head {
+        border-color: $dirty-blue;
+    }
+    .preview_card-name {
+        color: $dark-green-blue;
+    }
+    .preview_card-job {
+        color:$hospital-green;
+    }
+
+    .preview_card-social .item_btn  {
+        color:$dark-green-blue;
+        border-color:$hospital-green;
+        
+    }
+}
+
+.design-color2 {
+
+    .preview_card-head {
+        border-color:$rusty-red;
+    }
+    .preview_card-name {
+        color:$dried-blood;
+    }
+    .preview_card-job {
+        color:$dried-blood;
+    }
+    .preview_card-social .item_btn {
+        color:$tomato;
+        border-color:$rusty-red;
+    }
+}
+.design-color3 {
+    .preview_card-head {
+        border-color:$faded-orange;
+    }
+    .preview_card-name {
+        color:$slate;
+    }
+    .preview_card-job {
+        color:$slate;
+    }
+    .preview_card-social .item_btn {
+        color:$slate;
+        border-color:$faded-orange;
+    }
+}
+.design-color4 {
+    .preview_card-head {
+        border-color:$jungle-yellow;
+    }
+    .preview_card-name {
+        color:$jungle-green;
+    }
+    .preview_card-job {
+        color:$jungle-green;
+    }
+    .preview_card-social .item_btn {
+        color:$jungle-orange;
+        border-color:$jungle-green
+    }
+}
+
+.design-font1 {
+    .preview_card-name {
+        font-family: $montserrat-font;
+    }
+    .preview_card-job {
+        font-family: $montserrat-font;
+    }
+}
+
+.design-font2 {
+    .preview_card-name {
+        font-family: $cherry-font;
+    }
+    .preview_card-job {
+        font-family: $cherry-font;
+    }
+}
+
+.design-font3 {
+    .preview_card-name {
+        font-family: $kalam-font;
+    }
+    .preview_card-job {
+        font-family: $kalam-font;
+    }
+}

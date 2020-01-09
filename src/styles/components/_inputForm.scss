@@ -1,0 +1,100 @@
+.input_label{
+    @include text-open-14;
+    color: $dark-green-blue;
+    display: block;
+    margin: 20px auto 7px;
+}
+.input{
+    width: 100%;
+    padding-left: 10px;
+    @include text-open-14;
+    border: solid 1px $hospital-green;
+}
+.error-alert{
+    color: rgb(236, 18, 18);
+    line-height: 2;
+}
+.photo{
+    display: none;
+}
+.add-image-container{
+    display: flex;
+}
+.btn-add-image{
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px 0 $black-32;
+    background-color: $dull-orange;
+    @include text-open-14;
+    color: $white-full;
+}
+.preview-image{
+    width: 30px;
+    height: 30px;
+    background: top center no-repeat;
+    background-size: cover;
+    border: solid 1px $hospital-green;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+/*JS classes*/
+.hidden{
+    display: none;
+}
+.darkGreenBlue{
+    color: $dark-green-blue;
+}
+.driedBlood{
+    color: $dried-blood;
+}
+.slate{
+    color: $slate;
+}
+.jungleGreen{
+    color: $jungle-green;
+}
+.rotate{
+    transform: rotate(180deg);
+}
+.borderPalette1{
+    border-left: 5px solid $dirty-blue;
+}
+.borderPalette2{
+    border-left: 5px solid $rusty-red;
+}
+.borderPalette3{
+    border-left: 5px solid $faded-orange;
+}
+.borderPalette4{
+    border-left: 5px solid $jungle-yellow;
+}
+.fontMontserratRegular{
+    font-family: 'Montserrat', sans-serif;
+    font-size: rem(16);
+}
+.fontMontserratBold{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: rem(18);
+}
+.fontCherrySwashRegular{
+    font-family: 'Cherry Swash', cursive;
+    font-size: rem(16);
+}
+.fontCherrySwashBold{
+    font-family: 'Cherry Swash', cursive;
+    font-weight: 700;
+    font-size: rem(18);
+}
+.fontKalamRegular{
+    font-family: 'Kalam', cursive;
+    font-size: rem(18);
+}
+.fontKalamBold{
+    font-family: 'Kalam', cursive;
+    font-weight: 700;
+    font-size: rem(20);
+
+}
