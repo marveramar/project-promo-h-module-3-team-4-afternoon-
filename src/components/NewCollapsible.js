@@ -10,6 +10,7 @@ class NewCollapsible extends React.Component {
       isVisible: ''
     }
     this.handleCollapsible = this.handleCollapsible.bind(this)
+
   }
 
   handleCollapsible(event) {
@@ -24,7 +25,14 @@ class NewCollapsible extends React.Component {
         };
       }
     });
+    if (idName === 'shareContainer') {
+      this.props.validationHandler()
+    }
   }
+
+
+
+
 
 
 
@@ -38,6 +46,7 @@ class NewCollapsible extends React.Component {
           paletteValue={this.props.paletteValue}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
+          category='share'
         />
         <Input
           onChangeHandler={this.props.onChangeHandler}
@@ -49,7 +58,12 @@ class NewCollapsible extends React.Component {
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
           errorEmail={this.props.errorEmail}
+          errorName={this.props.errorName}
           errorPhone={this.props.errorPhone}
+          validationEmail={this.props.validationEmail}
+          validationPhone={this.props.validationPhone}
+
+
 
         />
         <SharedForm
@@ -57,7 +71,8 @@ class NewCollapsible extends React.Component {
           cardUrl={this.props.cardUrl}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
-          isDisable={this.props.isDisable}
+          isFormValid={this.props.isFormValid}
+
         />
       </React.Fragment>
 

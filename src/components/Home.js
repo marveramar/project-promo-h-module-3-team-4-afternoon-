@@ -19,16 +19,17 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
             isPhotoDefault: true,
             dataUrl: '',
             paletteValue: '4',
-            isDisabled: true,
-            errorEmail: '',
-            errorPhone: ''
+            errorEmail: false,
+            errorName: false,
+            errorPhone: false,
+            isFormValid: false,
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -37,10 +38,9 @@ class Home extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
-        this.validationHandler = this.validationHandler.bind(this);
-        this.validationText = this.validationText.bind(this);
         this.validationEmail = this.validationEmail.bind(this);
         this.validationPhone = this.validationPhone.bind(this);
+        this.validationHandler = this.validationHandler.bind(this);
 
 
     }
@@ -48,49 +48,61 @@ class Home extends React.Component {
 
 
 
-    validationHandler() {
-        if (!this.validationText() || !this.validationEmail() || !this.validationPhone()) {
-            this.setState({ isDisabled: true })
-        } else {
-            this.setState({ isDisabled: false })
-        }
-    }
+    validationName() {
+        if (this.state.userData.name === '') {
+            this.setState({
+                errorName: true
+            })
 
-    validationText() {
-        if (!this.state.userData.name || !this.state.userData.job || !this.state.userData.linkedin || !this.state.userData.github) {
-            return false
         } else {
-            return true
+            this.setState({
+                errorName: false
+            })
         }
     }
 
     validationEmail() {
-        if (this.state.userData.email === '' || !this.state.userData.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
-            this.setState({ errorEmail: 'Introducir email válido' })
-            return false
+        if (this.state.userData.email === '' || !this.state.userData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            this.setState({
+                errorEmail: true
+            })
         } else {
-            this.setState({ errorEmail: '' })
-            return true
+            this.setState({
+                errorEmail: false
+            })
         }
     }
 
     validationPhone() {
         if (!this.state.userData.phone.match(/^[0-9]{9}/)) {
-            this.setState({ errorPhone: 'Introduce un teléfono válido' })
-            return false
+            this.setState({ errorPhone: true })
         } else {
-            this.setState({ errorPhone: '' })
-            return true
+            this.setState({ errorPhone: false })
+
         }
     }
+
+
+    validationHandler() {
+        const { name, job, linkedin, github } = this.state.userData;
+        const { errorPhone, errorEmail } = this.state;
+
+        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true) {
+            this.setState({ isFormValid: false })
+        } else {
+            this.setState({ isFormValid: true })
+        }
+    }
+
 
 
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
-        localStorage.setItem('userData', JSON.stringify(userData))
-        this.validationHandler()
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+
 
     }
 
@@ -130,7 +142,7 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
@@ -147,7 +159,10 @@ class Home extends React.Component {
 
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
-            this.setState({ userData: getLocal })
+            this.setState({
+                userData: getLocal,
+
+            })
         }
     }
     updatePhoto(img) {
@@ -175,10 +190,7 @@ class Home extends React.Component {
 
     }
 
-    onSubmitHandler(e) {
-        e.preventDefault()
-        this.validationHandler()
-    }
+
 
 
     render() {
@@ -191,7 +203,7 @@ class Home extends React.Component {
                     <CardPreview
                         nameCard={this.getData().name}
                         jobCard={this.getData().job}
-                        phoneCard={this.getData().tel}
+                        phoneCard={this.getData().phone}
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
@@ -200,7 +212,7 @@ class Home extends React.Component {
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
                     ></CardPreview>
-                    <form className="form_wrapper" onSubmit={this.onSubmitHandler}>
+                    <form className="form_wrapper" >
                         <NewCollapsible
                             componentDidMount={this.componentDidMount}
                             rotateArrow={this.rotateArrow}
@@ -215,7 +227,12 @@ class Home extends React.Component {
                             paletteValue={this.state.paletteValue}
                             errorEmail={this.state.errorEmail}
                             errorPhone={this.state.errorPhone}
-                            isDisabled={this.state.isDisabled}
+                            isFormValid={this.state.isFormValid}
+                            validationEmail={this.validationEmail}
+                            validationPhone={this.validationPhone}
+                            validationHandler={this.validationHandler}
+
+
 
                         />
                     </form>

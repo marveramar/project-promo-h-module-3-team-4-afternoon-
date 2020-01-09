@@ -25,12 +25,15 @@
             transform: scale(1.05);
             box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.32);
         }
-        &:disabled{
-            background-color: $black-32;
-            pointer-events: none;
-            align-self: center;
-        }
+    
     }
+}
+.btn-disabled {
+    background-color: $black-32;
+    pointer-events: none;
+    align-self: center;
+    opacity: 50%;
+
 }
 .twitter{
     width: 100%;

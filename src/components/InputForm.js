@@ -10,6 +10,9 @@ class Input extends React.Component {
         super(props);
 
         this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.validationEmail = this.validationEmail.bind(this)
+        this.validationPhone = this.validationPhone.bind(this)
+
 
     }
 
@@ -20,12 +23,19 @@ class Input extends React.Component {
 
     }
 
+    validationEmail() {
+        this.props.validationEmail()
+    }
+    validationPhone() {
+        this.props.validationPhone()
+    }
+
 
     render() {
         const userData = this.props.data;
         console.log(userData)
         return (
-            <fieldset className="fieldset fieldset__fill-out">
+            <fieldset className="fieldset fieldset__fill-out" >
                 <div data-id="fillInContainer" onClick={this.props.handleCollapsible} id="fillInContainer" className="form_title-container">
                     <legend className="form_title"><i className="far fa-keyboard form_title-icon"></i>RELLENA</legend>
                     <span id="arrowFillIn"><i className={`fas fa-chevron-down ${this.props.isVisible === 'fillInContainer' ? 'rotate' : ''}`}></i></span>
@@ -43,10 +53,8 @@ class Input extends React.Component {
                         required
 
                     />
-                    <ErrorMessage
-                        id="error-name"
-                        errorText={this.props.errorName}
-                    />
+                    <span className={`error-alert ${this.props.errorName === true ? '' : ' hidden'}`} id="errorAlert">Introduzca nombre válido</span>
+
 
                     <label className="input_label" htmlFor="job">Puesto*</label>
                     <input
@@ -59,10 +67,8 @@ class Input extends React.Component {
                         onChange={this.onChangeHandler}
                         required
                     />
-                    <ErrorMessage
-                        id="error-job"
-                        errorText={this.props.errorJob}
-                    />
+
+
                     <label className="input_label" htmlFor="photo">Imagen de perfil *</label>
 
 
@@ -82,28 +88,28 @@ class Input extends React.Component {
                             placeholder="nombre.apellido@gmail.com"
                             value={userData.email}
                             onChange={this.onChangeHandler}
+                            onKeyUp={this.validationEmail}
                             required
                         />
-                        <ErrorMessage
-                            id="error-email"
-                            errorText={this.props.errorEmail}
-                        />
+                        <span className={`error-alert ${this.props.errorEmail === true ? '' : ' hidden'}`} id="errorAlert">El email introducido no es válido</span>
+
+
                     </div>
                     <div className="phone-container">
                         <label className="input_label" htmlFor="tel">Teléfono</label>
                         <input
                             id="tel" className="input"
                             placeholder="123456789"
-                            name="tel"
+                            name="phone"
                             type="tel"
-                            value={userData.tel}
+                            value={userData.phone}
                             onChange={this.onChangeHandler}
+                            onKeyUp={this.validationPhone}
+
                             required
                         />
-                        <ErrorMessage
-                            id="error-phone"
-                            errorText={this.props.errorPhone}
-                        />
+                        <span className={`error-alert ${this.props.errorPhone === true ? '' : ' hidden'}`} id="errorAlert">El teléfono introducido no es válido</span>
+
                     </div>
 
                     <label className="input_label" htmlFor="linkedin">Linkedin*</label>
@@ -117,10 +123,7 @@ class Input extends React.Component {
                         onChange={this.onChangeHandler}
                         required
                     />
-                    <ErrorMessage
-                        id="error-linkedin"
-                        errorText={this.props.errorLinkedin}
-                    />
+
 
                     <label className="input_label" htmlFor="tel">Github</label>
                     <input
@@ -133,10 +136,7 @@ class Input extends React.Component {
                         placeholder="nombre de usuaria"
                         required
                     />
-                    <ErrorMessage
-                        id="error-github"
-                        errorText={this.props.errorGithub}
-                    />
+
                 </div >
             </fieldset>
         );
