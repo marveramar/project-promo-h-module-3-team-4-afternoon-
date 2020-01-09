@@ -1,16 +1,12 @@
 import '../styles/App.scss';
 import React from 'react';
 import Header from './Header';
-// import Palette from './PaletteDesign';
-// import Fonts from './FontsDesign';
 import CardPreview from './CardPreview';
-// import SharedForm from './SharedForm';
-// import Input from './InputForm';
 import AppFooter from './Footer';
-import Collapsable from './Collapsable';
 import defaultImage from './defaultImage';
 import { handleApiFetch } from '../service/ApiFetch'
 import NewCollapsible from './NewCollapsible';
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -24,15 +20,19 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
             isPhotoDefault: true,
             errors: {},
             dataUrl: '',
+   
             paletteValue: '4',
             fontValue: '1',
+            
+            isLoading : false,
+            isError: true 
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -71,7 +71,7 @@ class Home extends React.Component {
             }
             return {
                 paletteValue: newPaletteValue,
-                userData: { ...newCardInfo, "palette": newPaletteValue }
+                userData: { ...newCardInfo, palette: newPaletteValue }
             }
         }
         )
@@ -100,6 +100,7 @@ class Home extends React.Component {
 
 
 
+
     handleReset(e) {
         e.preventDefault();
         this.setState({
@@ -111,7 +112,7 @@ class Home extends React.Component {
                 job: '',
                 photo: defaultImage,
                 email: '',
-                tel: '',
+                phone: '',
                 linkedin: '',
                 github: ''
             },
@@ -146,18 +147,17 @@ class Home extends React.Component {
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
             .then(data => {
-                console.log(data)
-                this.setState({
-                    dataUrl: data.cardURL
-                })
-
+                    this.setState({
+                        dataUrl: data.cardURL, 
+                        isLoading: false,
+                        isError:false
+                    })
             })
-
     }
 
 
     render() {
-        console.log(this.state)
+        console.log(this.state.isLoading, '121212')
 
         return (
             <div className="Main">
@@ -166,7 +166,7 @@ class Home extends React.Component {
                     <CardPreview
                         nameCard={this.getData().name}
                         jobCard={this.getData().job}
-                        phoneCard={this.getData().tel}
+                        phoneCard={this.getData().phone}
                         emailCard={this.getData().email}
                         linkedinCard={this.getData().linkedin}
                         githubCard={this.getData().github}
@@ -174,7 +174,9 @@ class Home extends React.Component {
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
+
                         fontValue={this.state.fontValue}
+
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <NewCollapsible
@@ -189,10 +191,16 @@ class Home extends React.Component {
                             data={this.state.userData}
                             handlePaletteChange={this.handlePaletteChange}
                             paletteValue={this.state.paletteValue}
+
                             handleFontsChange={this.handleFontsChange}
                             fontValue={this.state.fontValue}
 
+
+                            isLoading={this.state.isLoading}
+                            isError={this.state.isError}
+
                         />
+                    
                         {/* 
                         <Palette></Palette>
                         <Fonts></Fonts>

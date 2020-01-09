@@ -3,32 +3,29 @@ import Palette from './PaletteDesign';
 import SharedForm from './SharedForm';
 import Input from './InputForm';
 
-class NewCollapsible extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isVisible: ''
+
+class NewCollapsible extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={ 
+            isVisible:''
+        }
+        this.handleCollapsible= this.handleCollapsible.bind(this)
     }
-    this.handleCollapsible = this.handleCollapsible.bind(this)
-  }
 
-  handleCollapsible(event) {
-    let idName = event.currentTarget.getAttribute('data-id');
-    console.log(idName)
-    this.setState((prevState, props) => {
-      if (idName === prevState.isVisible) {
-        return { isVisible: null };
-      } else {
-        return {
-          isVisible: idName
-        };
-      }
-    });
-  }
-
-
-
-
+    handleCollapsible(event){
+        let idName = event.currentTarget.getAttribute('data-id');
+        console.log(idName)
+            this.setState((prevState, props) => {
+              if (idName === prevState.isVisible) {
+                return { isVisible: null };
+              } else {
+                return {
+                  isVisible: idName
+                };
+              }
+            });
+          }
 
   render() {
     return (
