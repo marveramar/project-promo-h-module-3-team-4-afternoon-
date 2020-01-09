@@ -2,7 +2,7 @@ import React from 'react';
 import Profile from './Profile';
 
 const Cardpreview = props => {
-    const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard, paletteValue } = props;
+    const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard, paletteValue, fontValue } = props;
 
     const selectDesign = (props) => {
         if (paletteValue === '4') {
@@ -19,12 +19,24 @@ const Cardpreview = props => {
         }
     }
 
+    const selectFont = (props) => {
+        if (fontValue === '1') {
+            return 'design-font1'
+        }
+        if (fontValue === '2') {
+            return 'design-font2'
+        }
+        if (fontValue === '3') {
+            return 'design-font3'
+        }
+    }
+
     return (
         <section className="preview">
             <div className={`preview_card-container ${selectDesign()}`}>
                 <button id="buttonReset" className="reset" onClick={props.handleReset}><i className="far fa-trash-alt"></i>reset</button>
                 <div className="preview_card">
-                    <div className="preview_card-head">
+                    <div className={`preview_card-head ${selectFont()}`}>
                         <h2 className="preview_card-name">{nameCard === '' ? 'Nombre Apellido' : nameCard}</h2>
                         <h3 className="preview_card-job">{jobCard === '' ? 'Front-end Developer' : jobCard}</h3>
                     </div>

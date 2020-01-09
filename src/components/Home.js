@@ -27,9 +27,12 @@ class Home extends React.Component {
             isPhotoDefault: true,
             errors: {},
             dataUrl: '',
-            paletteValue: '4', 
+   
+            paletteValue: '4',
+            fontValue: '1',
+            
             isLoading : false,
-            isError: true
+            isError: true 
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -38,6 +41,7 @@ class Home extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
+        this.handleFontsChange = this.handleFontsChange.bind(this);
     }
 
 
@@ -72,6 +76,28 @@ class Home extends React.Component {
         }
         )
     }
+
+    handleFontsChange(checkedFontValue) {
+        this.setState((prevState, props) => {
+            let newFontValue = prevState.fontValue;
+            let newCardFont = prevState.userData;
+            if (checkedFontValue === '1') {
+                newFontValue = '1'
+            }
+            if (checkedFontValue === '2') {
+                newFontValue = '2'
+            }
+            if (checkedFontValue === '3') {
+                newFontValue = '3'
+            }
+            return {
+                fontValue: newFontValue,
+                userData: { ...newCardFont, "font": newFontValue }
+            }
+        }
+        )
+    }
+
 
 
 
@@ -148,7 +174,9 @@ class Home extends React.Component {
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
-                        
+
+                        fontValue={this.state.fontValue}
+
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <NewCollapsible
@@ -163,8 +191,14 @@ class Home extends React.Component {
                             data={this.state.userData}
                             handlePaletteChange={this.handlePaletteChange}
                             paletteValue={this.state.paletteValue}
+
+                            handleFontsChange={this.handleFontsChange}
+                            fontValue={this.state.fontValue}
+
+
                             isLoading={this.state.isLoading}
                             isError={this.state.isError}
+
                         />
                     
                         {/* 

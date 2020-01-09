@@ -180,3 +180,30 @@
         border-color:$jungle-green
     }
 }
+
+.design-font1 {
+    .preview_card-name {
+        font-family: $montserrat-font;
+    }
+    .preview_card-job {
+        font-family: $montserrat-font;
+    }
+}
+
+.design-font2 {
+    .preview_card-name {
+        font-family: $cherry-font;
+    }
+    .preview_card-job {
+        font-family: $cherry-font;
+    }
+}
+
+.design-font3 {
+    .preview_card-name {
+        font-family: $kalam-font;
+    }
+    .preview_card-job {
+        font-family: $kalam-font;
+    }
+}
