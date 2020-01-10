@@ -13,6 +13,10 @@
 .error-alert{
     color: rgb(236, 18, 18);
     line-height: 2;
+    text-align: center;
+    font-family: $openSans-font;
+    font-size: rem(12);
+    margin: rem(4) rem(0);
 }
 .photo{
     display: none;

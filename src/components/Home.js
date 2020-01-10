@@ -71,10 +71,10 @@ class Home extends React.Component {
 
 
     validationHandler() {
-        const { name, job, linkedin, github } = this.state.userData;
+        const { name, job, linkedin, github, photo } = this.state.userData;
         const { errorPhone, errorEmail } = this.state;
 
-        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true) {
+        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true || photo === defaultImage) {
             this.setState({ isFormValid: false })
         } else {
             this.setState({ isFormValid: true })
