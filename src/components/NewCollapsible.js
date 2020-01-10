@@ -55,6 +55,7 @@ class NewCollapsible extends React.Component {
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
           isError={this.props.isError}
+          isLoading={this.props.isLoading}
         />
       </React.Fragment>
 
