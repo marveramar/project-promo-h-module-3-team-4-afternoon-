@@ -5,16 +5,12 @@ class Palette extends Component {
     constructor(props) {
         super(props)
         this.handlePaletteChange = this.handlePaletteChange.bind(this)
-
-
     }
 
     handlePaletteChange(ev) {
         let checkedOption = ev.target.value;
         this.props.handlePaletteChange(checkedOption);
     }
-
-
 
     render() {
         return (

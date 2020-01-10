@@ -3,7 +3,6 @@ import Palette from './PaletteDesign';
 import SharedForm from './SharedForm';
 import Input from './InputForm';
 
-
 class NewCollapsible extends React.Component {
   constructor(props) {
     super(props)
@@ -15,7 +14,6 @@ class NewCollapsible extends React.Component {
 
   handleCollapsible(event) {
     let idName = event.currentTarget.getAttribute('data-id');
-    console.log(idName)
     this.setState((prevState, props) => {
       if (idName === prevState.isVisible) {
         return { isVisible: null };
@@ -25,6 +23,9 @@ class NewCollapsible extends React.Component {
         };
       }
     });
+    if (idName === 'shareContainer') {
+      this.props.validationHandler()
+    }
   }
 
   render() {
@@ -32,11 +33,11 @@ class NewCollapsible extends React.Component {
       <React.Fragment>
         <Palette
           handlePaletteChange={this.props.handlePaletteChange}
-          handleFontsChange={this.props.handleFontsChange}
-          fontValue={this.props.fontValue}
           paletteValue={this.props.paletteValue}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
+          handleFontsChange={this.props.handleFontsChange}
+          fontValue={this.props.fontValue}
         />
         <Input
           onChangeHandler={this.props.onChangeHandler}
@@ -47,26 +48,24 @@ class NewCollapsible extends React.Component {
           handlerOpacityLink={this.props.handlerOpacityLink}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
-
+          errorEmail={this.props.errorEmail}
+          errorName={this.props.errorName}
+          errorPhone={this.props.errorPhone}
+          validationEmail={this.props.validationEmail}
+          validationPhone={this.props.validationPhone}
         />
         <SharedForm
           handleApiFetch={this.props.handleApiFetch}
           cardUrl={this.props.cardUrl}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
+          isFormValid={this.props.isFormValid}
           isError={this.props.isError}
           isLoading={this.props.isLoading}
         />
       </React.Fragment>
-
-
     )
   }
-
-
 }
-
-
-
 
 export default NewCollapsible;
