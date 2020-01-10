@@ -8,6 +8,7 @@ import { handleApiFetch } from '../service/ApiFetch'
 import NewCollapsible from './NewCollapsible';
 
 
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -42,6 +43,7 @@ class Home extends React.Component {
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
         this.handleFontsChange = this.handleFontsChange.bind(this);
+        this.isLoadingChange = this.isLoadingChange.bind(this);
     }
 
 
@@ -142,8 +144,11 @@ class Home extends React.Component {
         });
         localStorage.setItem('userData', JSON.stringify(newProfile))
     }
-
+    isLoadingChange() {
+        this.setState({ isLoading: true })
+    }
     handleApiFetch() {
+
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
             .then(data => {
@@ -153,6 +158,7 @@ class Home extends React.Component {
                     isError: false
                 })
             })
+        this.isLoadingChange()
     }
 
 
@@ -196,7 +202,9 @@ class Home extends React.Component {
                             isLoading={this.state.isLoading}
                             isError={this.state.isError}
 
+
                         />
+
 
                         {/* 
                         <Palette></Palette>
