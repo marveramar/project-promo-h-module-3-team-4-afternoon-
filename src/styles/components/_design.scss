@@ -1,18 +1,19 @@
 .form_wrapper{
-    margin: 0px 20px;
+    margin: rem(0) rem(20);
     align-self: center;
-    padding-top: 15px;
+    padding-top: rem(15);
     display: flex;
     flex-direction: column;
-    @include for-tablet-up{
+
+    @include for-tablet-up {
         margin: 0;
-        width: 400px;
+        width: rem(400);
         margin-block-end: auto;
-        padding-right: 30px;  
+        padding-right: rem(30);  
     }
 }
 .fieldset{
-    border-bottom: 1px solid $white-two;
+    border-bottom: rem(1) solid $white-two;
     
 }
 .form_title-container{
@@ -23,17 +24,19 @@
     cursor: pointer;
 }
 
-.react-sanfona{
-    width: 320px;
+.react-sanfona {
+    width: rem(320);
 }
-.form_title{
+.form_title {
+
     @include text-open-18-600;
+
     color: $gunmetal;
-    margin: 12px 0;
+    margin: rem(12) 0;
 
     &-icon{
         color: $dull-orange;
-        margin-right: 10px;
+        margin-right: rem(10);
     }
 }
 
@@ -45,50 +48,50 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: rem(10);
 
-    &_title{
+    &_title {
         @include text-open-14;
         color: $gunmetal;
     }
 }
 .color_theme{
     display: inline-flex;
-    .item{
-        width: 30px;
-        height: 25px;
+    .item {
+        width: rem(30);
+        height: rem(25);
         display: inline-block;
     }
 }
 .palette-container{
-    padding-bottom: 10px;
+    padding-bottom: rem(10);
 }
 .font_families{
     display: flex;
     flex-direction: column; 
 }
 .font-container{
-    padding: 10px 0 10px;
+    padding: rem(10) 0 rem(10);
     display: flex;
     flex-direction: row-reverse;
     align-self: flex-start;
 }
-#fieldset__design--{
+#fieldset__design-- {
     &palette-1, &palette-2, &palette-3, &palette-4{
         vertical-align: 30%;
     }
 }
-.font-montserrat{
+.font-montserrat {
     @include text-montserrat-16-400;
-    margin-left: 5px;
+    margin-left: rem(5);
 }
 .font-cherry{
     @include text-cherry-16-400;
-    margin-left: 5px;
+    margin-left: rem(5);
 }
 .font-kalam{
     @include text-kalam-16-400;
-    margin-left: 5px;
+    margin-left: rem(5);
 }
 #github {
     margin-bottom: 34px;
@@ -110,9 +113,9 @@
     &c3{background-color: $light-grey-blue;}
 }
 .palette4-{
-    &c1{background-color: $jungle-green;}
-    &c2{background-color: $jungle-yellow;}
-    &c3{background-color: $jungle-orange;}
+    &c1{background-color: $merche-orange;}
+    &c2{background-color: $merche-lavander;}
+    &c3{background-color: $merche-blue;}
 }
 
 .design-color1{
@@ -167,17 +170,17 @@
 }
 .design-color4 {
     .preview_card-head {
-        border-color:$jungle-yellow;
+        border-color:$merche-lavander;
     }
     .preview_card-name {
-        color:$jungle-green;
+        color:$merche-lavander;
     }
     .preview_card-job {
-        color:$jungle-green;
+        color:$merche-blue;
     }
     .preview_card-social .item_btn {
-        color:$jungle-orange;
-        border-color:$jungle-green
+        color:$merche-blue;
+        border-color:$merche-orange
     }
 }
 

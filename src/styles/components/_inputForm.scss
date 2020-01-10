@@ -2,17 +2,21 @@
     @include text-open-14;
     color: $dark-green-blue;
     display: block;
-    margin: 20px auto 7px;
+    margin: rem(20) auto rem(7);
 }
 .input{
     width: 100%;
-    padding-left: 10px;
+    padding-left: rem(10);
     @include text-open-14;
     border: solid 1px $hospital-green;
 }
-.error-alert{
+.error-alert {
     color: rgb(236, 18, 18);
     line-height: 2;
+    text-align: center;
+    font-family: $openSans-font;
+    font-size: rem(12);
+    margin: rem(4) rem(0);
 }
 .photo{
     display: none;
@@ -21,22 +25,22 @@
     display: flex;
 }
 .btn-add-image{
-    width: 140px;
-    height: 30px;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 $black-32;
+    width: rem(140);
+    height: rem(30);
+    border-radius: rem(5);
+    box-shadow: rem(0) rem(0) rem(4) rem(0) $black-32;
     background-color: $dull-orange;
     @include text-open-14;
     color: $white-full;
 }
 .preview-image{
-    width: 30px;
-    height: 30px;
+    width: rem(30);
+    height: rem(30);
     background: top center no-repeat;
     background-size: cover;
-    border: solid 1px $hospital-green;
+    border: solid rem(1) $hospital-green;
     display: inline-block;
-    margin-left: 20px;
+    margin-left: rem(20);
 }
 
 /*JS classes*/
@@ -53,22 +57,22 @@
     color: $slate;
 }
 .jungleGreen{
-    color: $jungle-green;
+    color: $merche-blue;
 }
 .rotate{
     transform: rotate(180deg);
 }
 .borderPalette1{
-    border-left: 5px solid $dirty-blue;
+    border-left: rem(5) solid $dirty-blue;
 }
 .borderPalette2{
-    border-left: 5px solid $rusty-red;
+    border-left: rem(5) solid $rusty-red;
 }
 .borderPalette3{
-    border-left: 5px solid $faded-orange;
+    border-left: rem(5) solid $faded-orange;
 }
 .borderPalette4{
-    border-left: 5px solid $jungle-yellow;
+    border-left: rem(5) solid $merche-lavander;
 }
 .fontMontserratRegular{
     font-family: 'Montserrat', sans-serif;

@@ -71,10 +71,10 @@ class Home extends React.Component {
 
 
     validationHandler() {
-        const { name, job, linkedin, github } = this.state.userData;
+        const { name, job, linkedin, github, photo } = this.state.userData;
         const { errorPhone, errorEmail } = this.state;
 
-        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true) {
+        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true || photo === defaultImage) {
             this.setState({ isFormValid: false })
         } else {
             this.setState({ isFormValid: true })
@@ -196,8 +196,8 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="Main">
-                <Header></Header>
+            <React.Fragment>
+                <Header />
                 <main className="main">
                     <CardPreview
                         nameCard={this.getData().name}
@@ -211,7 +211,7 @@ class Home extends React.Component {
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
                         fontValue={this.state.fontValue}
-                    ></CardPreview>
+                    />
                     <form className="form_wrapper" >
                         <NewCollapsible
                             componentDidMount={this.componentDidMount}
@@ -238,8 +238,8 @@ class Home extends React.Component {
                         />
                     </form>
                 </main>
-                <AppFooter></AppFooter>
-            </div >
+                <AppFooter />
+            </React.Fragment>
         )
     }
 }
