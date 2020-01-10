@@ -1,26 +1,17 @@
 import React from 'react';
-import ErrorMessage from './ErrorMessage'
-
 import GetAvatar from './GetAvatar';
-
 
 class Input extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.validationEmail = this.validationEmail.bind(this)
         this.validationPhone = this.validationPhone.bind(this)
-
-
     }
-
 
     onChangeHandler(event) {
         this.props.onChangeHandler(event.target.name, event.target.value);
-        console.log(event.target.value)
-
     }
 
     validationEmail() {
@@ -30,10 +21,8 @@ class Input extends React.Component {
         this.props.validationPhone()
     }
 
-
     render() {
         const userData = this.props.data;
-        console.log(userData)
         return (
             <fieldset className="fieldset fieldset__fill-out" >
                 <div data-id="fillInContainer" onClick={this.props.handleCollapsible} id="fillInContainer" className="form_title-container">
@@ -51,11 +40,7 @@ class Input extends React.Component {
                         value={userData.name}
                         onChange={this.onChangeHandler}
                         required
-
                     />
-                    <span className={`error-alert ${this.props.errorName === true ? '' : ' hidden'}`} id="errorAlert">Introduzca nombre válido</span>
-
-
                     <label className="input_label" htmlFor="job">Puesto*</label>
                     <input
                         id="job-title"
@@ -67,17 +52,12 @@ class Input extends React.Component {
                         onChange={this.onChangeHandler}
                         required
                     />
-
-
                     <label className="input_label" htmlFor="photo">Imagen de perfil *</label>
-
-
                     <GetAvatar
                         photo={this.props.photo}
                         isPhotoDefault={this.props.isPhotoDefault}
                         updatePhoto={this.props.updatePhoto}
                     />
-
                     <div className="email-container">
                         <label className="input_label" htmlFor="email">Email*</label>
                         <input
@@ -92,8 +72,6 @@ class Input extends React.Component {
                             required
                         />
                         <span className={`error-alert ${this.props.errorEmail === true ? '' : ' hidden'}`} id="errorAlert">El email introducido no es válido</span>
-
-
                     </div>
                     <div className="phone-container">
                         <label className="input_label" htmlFor="tel">Teléfono</label>
@@ -105,13 +83,10 @@ class Input extends React.Component {
                             value={userData.phone}
                             onChange={this.onChangeHandler}
                             onKeyUp={this.validationPhone}
-
                             required
                         />
                         <span className={`error-alert ${this.props.errorPhone === true ? '' : ' hidden'}`} id="errorAlert">El teléfono introducido no es válido</span>
-
                     </div>
-
                     <label className="input_label" htmlFor="linkedin">Linkedin*</label>
                     <input
                         id="linkedin"
@@ -123,8 +98,6 @@ class Input extends React.Component {
                         onChange={this.onChangeHandler}
                         required
                     />
-
-
                     <label className="input_label" htmlFor="tel">Github</label>
                     <input
                         id="github"
@@ -136,10 +109,10 @@ class Input extends React.Component {
                         placeholder="nombre de usuaria"
                         required
                     />
-
                 </div >
             </fieldset>
         );
     }
 }
+
 export default Input;
