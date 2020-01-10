@@ -10,12 +10,10 @@ class NewCollapsible extends React.Component {
       isVisible: ''
     }
     this.handleCollapsible = this.handleCollapsible.bind(this)
-
   }
 
   handleCollapsible(event) {
     let idName = event.currentTarget.getAttribute('data-id');
-    console.log(idName)
     this.setState((prevState, props) => {
       if (idName === prevState.isVisible) {
         return { isVisible: null };
@@ -30,14 +28,6 @@ class NewCollapsible extends React.Component {
     }
   }
 
-
-
-
-
-
-
-
-
   render() {
     return (
       <React.Fragment>
@@ -46,7 +36,8 @@ class NewCollapsible extends React.Component {
           paletteValue={this.props.paletteValue}
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
-          category='share'
+          handleFontsChange={this.props.handleFontsChange}
+          fontValue={this.props.fontValue}
         />
         <Input
           onChangeHandler={this.props.onChangeHandler}
@@ -62,9 +53,6 @@ class NewCollapsible extends React.Component {
           errorPhone={this.props.errorPhone}
           validationEmail={this.props.validationEmail}
           validationPhone={this.props.validationPhone}
-
-
-
         />
         <SharedForm
           handleApiFetch={this.props.handleApiFetch}
@@ -72,18 +60,12 @@ class NewCollapsible extends React.Component {
           handleCollapsible={this.handleCollapsible}
           isVisible={this.state.isVisible}
           isFormValid={this.props.isFormValid}
-
+          isError={this.props.isError}
+          isLoading={this.props.isLoading}
         />
       </React.Fragment>
-
-
     )
   }
-
-
 }
-
-
-
 
 export default NewCollapsible;

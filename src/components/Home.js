@@ -7,12 +7,13 @@ import defaultImage from './defaultImage';
 import { handleApiFetch } from '../service/ApiFetch'
 import NewCollapsible from './NewCollapsible';
 
+
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userData: {
-
                 palette: '',
                 font: '',
                 name: '',
@@ -26,10 +27,12 @@ class Home extends React.Component {
             isPhotoDefault: true,
             dataUrl: '',
             paletteValue: '4',
+            fontValue: '1',
             errorEmail: false,
-            errorName: false,
             errorPhone: false,
             isFormValid: false,
+            isLoading: false,
+            isError: true
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -41,24 +44,8 @@ class Home extends React.Component {
         this.validationEmail = this.validationEmail.bind(this);
         this.validationPhone = this.validationPhone.bind(this);
         this.validationHandler = this.validationHandler.bind(this);
-
-
-    }
-
-
-
-
-    validationName() {
-        if (this.state.userData.name === '') {
-            this.setState({
-                errorName: true
-            })
-
-        } else {
-            this.setState({
-                errorName: false
-            })
-        }
+        this.handleFontsChange = this.handleFontsChange.bind(this);
+        this.isLoadingChange = this.isLoadingChange.bind(this);
     }
 
     validationEmail() {
@@ -101,9 +88,6 @@ class Home extends React.Component {
         userData[name] = value;
         this.setState({ userData })
         localStorage.setItem('userData', JSON.stringify(userData));
-
-
-
     }
 
     handlePaletteChange(checkedPaletteValue) {
@@ -124,18 +108,37 @@ class Home extends React.Component {
             }
             return {
                 paletteValue: newPaletteValue,
-                userData: { ...newCardInfo, "palette": newPaletteValue }
+                userData: { ...newCardInfo, palette: newPaletteValue }
             }
         }
         )
     }
 
+    handleFontsChange(checkedFontValue) {
+        this.setState((prevState, props) => {
+            let newFontValue = prevState.fontValue;
+            let newCardFont = prevState.userData;
+            if (checkedFontValue === '1') {
+                newFontValue = '1'
+            }
+            if (checkedFontValue === '2') {
+                newFontValue = '2'
+            }
+            if (checkedFontValue === '3') {
+                newFontValue = '3'
+            }
+            return {
+                fontValue: newFontValue,
+                userData: { ...newCardFont, "font": newFontValue }
+            }
+        }
+        )
+    }
 
     handleReset(e) {
         e.preventDefault();
         this.setState({
             userData: {
-
                 font: '',
                 palette: 1,
                 name: '',
@@ -150,21 +153,17 @@ class Home extends React.Component {
         localStorage.clear()
     }
 
-
-    getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
-
-
+    getData = () => this.state.userData === '' ? 'fail' : this.state.userData;
 
     componentDidMount() {
-
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
             this.setState({
                 userData: getLocal,
-
             })
         }
     }
+
     updatePhoto(img) {
         const { userData } = this.state;
         const newProfile = { ...userData, photo: img };
@@ -177,25 +176,24 @@ class Home extends React.Component {
         localStorage.setItem('userData', JSON.stringify(newProfile))
     }
 
+    isLoadingChange() {
+        this.setState({ isLoading: true })
+    }
+
     handleApiFetch() {
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
             .then(data => {
-                console.log(data)
                 this.setState({
-                    dataUrl: data.cardURL
+                    dataUrl: data.cardURL,
+                    isLoading: false,
+                    isError: false
                 })
-
             })
-
+        this.isLoadingChange()
     }
 
-
-
-
     render() {
-        console.log(this.state)
-
         return (
             <div className="Main">
                 <Header></Header>
@@ -211,6 +209,7 @@ class Home extends React.Component {
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
+                        fontValue={this.state.fontValue}
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <NewCollapsible
@@ -231,9 +230,10 @@ class Home extends React.Component {
                             validationEmail={this.validationEmail}
                             validationPhone={this.validationPhone}
                             validationHandler={this.validationHandler}
-
-
-
+                            handleFontsChange={this.handleFontsChange}
+                            fontValue={this.state.fontValue}
+                            isLoading={this.state.isLoading}
+                            isError={this.state.isError}
                         />
                     </form>
                 </main>
@@ -242,4 +242,5 @@ class Home extends React.Component {
         )
     }
 }
+
 export default Home;

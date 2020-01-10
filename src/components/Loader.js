@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/components/loader.scss'
+import '../styles/components/_loader.scss'
 
 
 const Loader = () => {
-    return <div class="lds-facebook"><div></div><div></div><div></div></div>;
+    return <div className="spinner"></div>;
 
 }
 export default Loader;

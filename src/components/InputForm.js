@@ -76,7 +76,7 @@ class Input extends React.Component {
                     <div className="phone-container">
                         <label className="input_label" htmlFor="tel">Teléfono</label>
                         <input
-                            id="tel" className="input"
+                            id="phone" className="input"
                             placeholder="123456789"
                             name="phone"
                             type="tel"
@@ -110,7 +110,7 @@ class Input extends React.Component {
                         required
                     />
                 </div >
-            </fieldset>
+            </fieldset >
         );
     }
 }

@@ -5,21 +5,16 @@ class Palette extends Component {
     constructor(props) {
         super(props)
         this.handlePaletteChange = this.handlePaletteChange.bind(this)
-
     }
 
     handlePaletteChange(ev) {
         let checkedOption = ev.target.value;
         this.props.handlePaletteChange(checkedOption);
-
     }
-
-
-
 
     render() {
         return (
-            <fieldset className="fieldset fieldset__design" >
+            <fieldset className="fieldset fieldset__design">
                 <div data-id="designContainer" onClick={this.props.handleCollapsible} id="designContainer" className="form_title-container">
                     <legend className="form_title"><i className="far fa-object-ungroup form_title-icon"></i>DISEÑA</legend>
                     <span className="arrowDesign" id="arrowDesign"><i className={`fas fa-chevron-down ${this.props.isVisible === 'designContainer' ? 'rotate' : ''}`}></i></span>
@@ -68,7 +63,10 @@ class Palette extends Component {
                             </div>
                         </div>
                     </div>
-                    <Fonts />
+                    <Fonts
+                        handleFontsChange={this.props.handleFontsChange}
+                        fontValue={this.props.fontValue}
+                    />
                 </div>
             </fieldset>
         )
