@@ -140,7 +140,7 @@ class Home extends React.Component {
         this.setState({
             userData: {
                 font: '',
-                palette: 1,
+                palette: '4',
                 name: '',
                 job: '',
                 photo: defaultImage,
@@ -149,6 +149,7 @@ class Home extends React.Component {
                 linkedin: '',
                 github: ''
             },
+            paletteValue:'4'
         });
         localStorage.clear()
     }
