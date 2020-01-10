@@ -195,8 +195,8 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div className="Main">
-                <Header></Header>
+            <React.Fragment>
+                <Header />
                 <main className="main">
                     <CardPreview
                         nameCard={this.getData().name}
@@ -210,7 +210,7 @@ class Home extends React.Component {
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
                         fontValue={this.state.fontValue}
-                    ></CardPreview>
+                    />
                     <form className="form_wrapper" >
                         <NewCollapsible
                             componentDidMount={this.componentDidMount}
@@ -237,8 +237,8 @@ class Home extends React.Component {
                         />
                     </form>
                 </main>
-                <AppFooter></AppFooter>
-            </div >
+                <AppFooter />
+            </React.Fragment>
         )
     }
 }

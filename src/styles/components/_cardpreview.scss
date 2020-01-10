@@ -2,7 +2,7 @@
 .opacity {
     opacity: 0.6;
 }
-.main{
+.main {
     background-image: linear-gradient(to bottom, #f5f5f5, $white-full 9%);
     height: 80%;
     @include for-tablet-up{
@@ -23,45 +23,46 @@
 	margin-bottom: rem(10);
 }
 
-.preview{
-    background-color: rgb(168, 164, 164);
+.preview {
+    background-color: rgba(168, 164, 164, 0.5);
     background-size: cover;
     height: 80vh;
-    //overflow: hidden;
-    border-bottom: 3px solid $dark-green-blue;
-    border-top: 3px solid $dark-green-blue;
+    border-bottom: 3px solid rgba(168, 164, 164, 0.5);
+    border-top: 3px solid rgba(168, 164, 164, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
+
     @include for-tablet-up{
         width: 80%;
         height: auto;
-        margin-top: 23px;
-        margin-bottom: 21px;
-        border-radius: 6px;
-        padding: 50px 0 80px;
-        border: 3px solid $dark-green-blue;
-        border-radius: 8px;
+        margin-top: rem(23);
+        margin-bottom: rem(21);
+        border-radius: rem(6);
+        padding: rem(50) 0 rem(80);
+        border: 3px solid rgba(168, 164, 164, 0.5);
+        border-radius: rem(8);
     }
         
-    &_card-container{
-        height: 400px;
-        width: 270px;
-        border-radius: 8px;
-        background-color: $dark-green-blue-transparent;
+    &_card-container {
+        height: rem(400);
+        width: rem(270);
+        border-radius: rem(8);
+        background-color: rgba(248, 84, 85, 0.5);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
         @include for-desktop-up{
-            height: 470px;
-            width: 340px;
+            height: rem(470);
+            width: rem(340);
         }
 
     }
     .reset{
-        width: 75px;
-        height: 30px;
+        width: rem(75);
+        height: rem(30);
         margin-top: 40px;
         align-self: center;
         transform: translateX(-85px);
@@ -77,23 +78,25 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+
         &:hover {
             border: solid 2px $dark-green-blue;
             color: $dark-green-blue;
-            box-shadow: 0 0 25px $white-full;
+            box-shadow: 0 0 rem(15) $white-full;
+            transition: box-shadow ease-in 0.5s, color ease-in 0.5s, border ease-in 0.5s;
         }
     }
     
     &_card{
-        margin: 20px 30px 40px 30px;
+        margin: rem(20) rem(30) rem(40) rem(30);
         background-color: $white-full;
-        width: 240px;
-        height: 329px;
+        width: rem(240);
+        height: rem(329);
 
         &-head{
-            margin-top: 23px;
-            margin-bottom: 10px;
-            border-left: 5px solid $dirty-blue;
+            margin-top: rem(23);
+            margin-bottom: rem(10);
+            border-left: rem(5) solid $dirty-blue;
         }
 
         &-name{
@@ -101,48 +104,48 @@
             font-family: $montserrat-font;
             font-weight: $bold-weight;
             font-size: rem(18);
-            line-height: 20px;
+            line-height: rem(20);
             color: $dark-green-blue;
-            padding-left: 20px;
-            margin-top: 0px;
-            margin-bottom: 2px;
+            padding-left: rem(20);
+            margin-top: rem(0);
+            margin-bottom: rem(2);
         }
         
         &-job{
             font-family: $montserrat-font;
             font-weight: $regular-weight;
             font-size: rem(16);
-            line-height: 20px;
+            line-height: rem(20);
             color: $gunmetal;
-            padding-left: 20px;
-            margin-top: 2px;
-            margin-bottom: 0px;
+            padding-left: rem(20);
+            margin-top: rem(2);
+            margin-bottom: rem(0);
         }
         &-image {
-            // background: url('../../images/portrait.jpg') top center no-repeat;
+
             background-size: cover;
-            width: 240px;
-            height: 200px;
+            width: rem(240);
+            height: rem(200);
         }
         &-social{
             display: flex;
             flex-direction: row;
             align-content: flex-start;
             justify-content: center;
-            height: 50px;
-            padding-right: 62px;
-            padding-left: 20px;
-            margin-top: 7px;
+            height: rem(50);
+            padding-right: rem(62);
+            padding-left: rem(20);
+            margin-top: rem(7);
 
-            .item{
-                height: 32px;
+            .item {
+                height: rem(32);
 
                 &_btn{
-                    border: solid 2px $hospital-green;
+                    border: solid rem(2) $hospital-green;
                     border-radius: 50%;
-                    width: 32px;
-                    height: 32px;
-                    margin: 0px 5px 15px 5px;
+                    width: rem(32);
+                    height: rem(32);
+                    margin: rem(0) rem(5) rem(15) rem(5);
                     color: $dark-green-blue;
                     display: flex;
                     justify-content: center;

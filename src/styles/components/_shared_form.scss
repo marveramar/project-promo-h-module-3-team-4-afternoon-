@@ -6,24 +6,24 @@
 
 .create_card{
     width: 100%;
-   
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     &-btn{
-        width: 199px;
-        height: 50px;
-        margin: 25px 0px 35px;
-        border-radius: 12px;
-        box-shadow: 0 1px 6px 0 $black-32;
+        width: rem(199);
+        height: rem(50);
+        margin: rem(25) rem(0) rem(35);
+        border-radius: rem(12);
+        box-shadow: 0 rem(1) rem(6) 0 $black-32;
         background-color: $dull-orange;
         color: $white-full;
         align-self: center;
         cursor: pointer;
         &:hover{
             transform: scale(1.05);
-            box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.32);
+            box-shadow: 0 rem(1) rem(15) 0 rgba(0, 0, 0, 0.32);
+            transition: transform ease-in 0.3s;
         }
     
     }
@@ -41,18 +41,18 @@
     align-items: center;
     
     &-message{
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: rem(20);
+        margin-bottom: rem(10);
         @include text-open-18-600;
         color: $gunmetal;
     }
     &-btn{
-        width: 195px;
-        height: 33px;
+        width: rem(195);
+        height: rem(33);
         display: block;
-        padding-top: 6px;
-        border-radius: 5px;
-        box-shadow: 0 0 4px 0 $black-32;
+        padding-top: rem(6);
+        border-radius: rem(5);
+        box-shadow: 0 0 rem(4) 0 $black-32;
         background-color: $azure;
         @include text-open-14;
         color: #ffffff;
@@ -60,30 +60,38 @@
         margin: 20px auto 30px;
         &:hover{
             transform: scale(1.05);
+            transition: transform ease-in 0.5s;
         }
     }
 }
 .linkedin-btn{
-    width: 195px;
-    height: 33px;
+    width: rem(195);
+    height: rem(33);
     display: block;
-    padding-top: 5px;
-    padding-bottom: 9px;
-    border-radius: 5px;
-    box-shadow: 0 0 4px 0 $black-32;
+    padding-top: rem(5);
+    padding-bottom: rem(9);
+    border-radius: rem(5);
+    box-shadow: 0 0 rem(4) 0 $black-32;
     border: 1px solid rgb(51, 50, 50);
     background-color: #dbdfe2;
     @include text-open-14;
     font-weight: 600;
     color: black;
     text-align: center;
-    margin: 0 auto 30px;
+    margin: 0 auto rem(30);
     &:hover{
         transform: scale(1.05);
+        transition: transform ease-in 0.5s;
     }
 }
 .fa-linkedin{
     color: #0077b5;
     font-size: rem(18);
-    margin-top: 1px;
+    margin-top: rem(1);
+}
+
+.card-url {
+    text-align: center;
+    font-family: $openSans-font;
+    font-size: rem(12);
 }
