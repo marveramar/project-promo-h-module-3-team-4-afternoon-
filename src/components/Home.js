@@ -8,12 +8,12 @@ import { handleApiFetch } from '../service/ApiFetch'
 import NewCollapsible from './NewCollapsible';
 
 
+
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userData: {
-
                 palette: '',
                 font: '',
                 name: '',
@@ -25,12 +25,12 @@ class Home extends React.Component {
                 github: ''
             },
             isPhotoDefault: true,
-            errors: {},
             dataUrl: '',
-
             paletteValue: '4',
             fontValue: '1',
-
+            errorEmail: false,
+            errorPhone: false,
+            isFormValid: false,
             isLoading: false,
             isError: true
         }
@@ -41,16 +41,53 @@ class Home extends React.Component {
         this.handleReset = this.handleReset.bind(this);
         this.handleApiFetch = this.handleApiFetch.bind(this);
         this.handlePaletteChange = this.handlePaletteChange.bind(this);
+        this.validationEmail = this.validationEmail.bind(this);
+        this.validationPhone = this.validationPhone.bind(this);
+        this.validationHandler = this.validationHandler.bind(this);
         this.handleFontsChange = this.handleFontsChange.bind(this);
+        this.isLoadingChange = this.isLoadingChange.bind(this);
     }
+
+    validationEmail() {
+        if (this.state.userData.email === '' || !this.state.userData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            this.setState({
+                errorEmail: true
+            })
+        } else {
+            this.setState({
+                errorEmail: false
+            })
+        }
+    }
+
+    validationPhone() {
+        if (!this.state.userData.phone.match(/^[0-9]{9}/)) {
+            this.setState({ errorPhone: true })
+        } else {
+            this.setState({ errorPhone: false })
+
+        }
+    }
+
+
+    validationHandler() {
+        const { name, job, linkedin, github } = this.state.userData;
+        const { errorPhone, errorEmail } = this.state;
+
+        if (name === '' || job === '' || linkedin === '' || github === '' || errorPhone === true || errorEmail === true) {
+            this.setState({ isFormValid: false })
+        } else {
+            this.setState({ isFormValid: true })
+        }
+    }
+
 
 
     onChangeHandler = (name, value) => {
         let { userData } = this.state;
         userData[name] = value;
         this.setState({ userData })
-        localStorage.setItem('userData', JSON.stringify(userData))
-
+        localStorage.setItem('userData', JSON.stringify(userData));
     }
 
     handlePaletteChange(checkedPaletteValue) {
@@ -98,14 +135,10 @@ class Home extends React.Component {
         )
     }
 
-
-
-
     handleReset(e) {
         e.preventDefault();
         this.setState({
             userData: {
-
                 font: '',
                 palette: 1,
                 name: '',
@@ -120,17 +153,17 @@ class Home extends React.Component {
         localStorage.clear()
     }
 
-
-    getData = () => this.state.userData === '' ? 'algo' : this.state.userData;
-
+    getData = () => this.state.userData === '' ? 'fail' : this.state.userData;
 
     componentDidMount() {
-
         const getLocal = JSON.parse(localStorage.getItem('userData'));
         if (getLocal !== null) {
-            this.setState({ userData: getLocal })
+            this.setState({
+                userData: getLocal,
+            })
         }
     }
+
     updatePhoto(img) {
         const { userData } = this.state;
         const newProfile = { ...userData, photo: img };
@@ -143,6 +176,10 @@ class Home extends React.Component {
         localStorage.setItem('userData', JSON.stringify(newProfile))
     }
 
+    isLoadingChange() {
+        this.setState({ isLoading: true })
+    }
+
     handleApiFetch() {
         const getItem = JSON.parse(localStorage.getItem('userData'));
         handleApiFetch(getItem)
@@ -153,12 +190,10 @@ class Home extends React.Component {
                     isError: false
                 })
             })
+        this.isLoadingChange()
     }
 
-
     render() {
-        console.log(this.state.isLoading, '121212')
-
         return (
             <div className="Main">
                 <Header></Header>
@@ -174,9 +209,7 @@ class Home extends React.Component {
                         handleReset={this.handleReset}
                         opacity={this.state.opacity}
                         paletteValue={this.state.paletteValue}
-
                         fontValue={this.state.fontValue}
-
                     ></CardPreview>
                     <form className="form_wrapper" >
                         <NewCollapsible
@@ -191,21 +224,17 @@ class Home extends React.Component {
                             data={this.state.userData}
                             handlePaletteChange={this.handlePaletteChange}
                             paletteValue={this.state.paletteValue}
+                            errorEmail={this.state.errorEmail}
+                            errorPhone={this.state.errorPhone}
+                            isFormValid={this.state.isFormValid}
+                            validationEmail={this.validationEmail}
+                            validationPhone={this.validationPhone}
+                            validationHandler={this.validationHandler}
                             handleFontsChange={this.handleFontsChange}
                             fontValue={this.state.fontValue}
                             isLoading={this.state.isLoading}
                             isError={this.state.isError}
-
                         />
-
-                        {/* 
-                        <Palette></Palette>
-                        <Fonts></Fonts>
-                        <Input
-                            onChange={this.eventInput}
-                            data={this.state}
-                        ></Input>
-                        <SharedForm></SharedForm>*/}
                     </form>
                 </main>
                 <AppFooter></AppFooter>
@@ -213,4 +242,5 @@ class Home extends React.Component {
         )
     }
 }
+
 export default Home;
