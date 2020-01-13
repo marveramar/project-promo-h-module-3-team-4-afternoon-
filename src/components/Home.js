@@ -195,7 +195,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div>
                 <Header />
                 <main className="main">
                     <CardPreview
@@ -238,7 +238,7 @@ class Home extends React.Component {
                     </form>
                 </main>
                 <AppFooter />
-            </React.Fragment>
+            </div>
         )
     }
 }
