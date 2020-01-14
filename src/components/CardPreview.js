@@ -1,5 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
+import PropTypes from 'prop-types';
 
 const Cardpreview = props => {
     const { nameCard, jobCard, phoneCard, emailCard, linkedinCard, githubCard, paletteValue, fontValue } = props;
@@ -72,5 +73,14 @@ const Cardpreview = props => {
         </section >
     );
 }
-
+Cardpreview.propTypes = {
+    nameCard: PropTypes.string,
+    jobCard: PropTypes.string,
+    phoneCard: PropTypes.number,
+    emailCard: PropTypes.string,
+    linkedinCard: PropTypes.string,
+    githubCard: PropTypes.string,
+    paletteValue: PropTypes.string,
+    fontValue: PropTypes.string,
+}
 export default Cardpreview;

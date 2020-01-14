@@ -31,8 +31,10 @@ class SharedForm extends React.Component {
                         <button onClick={this.handleApiFetch} type="submit" value="submit" id="createCardButton" className={`create_card-btn ${this.props.isFormValid === true ? '' : 'btn-disabled'}`}><i className="far fa-address-card"> CREAR TARJETA</i></button>
 
                         <span className={`error-alert ${this.props.isFormValid === false ? '' : ' hidden'}`} id="errorAlert">Faltan campos por completar</span>
-                        {this.props.isLoading === true ? <Loader /> : ''}
+
                     </div>
+                    <div className="loader">{this.props.isLoading === true ? <Loader /> : ''} </div>
+
                     <div className={`twitter ${this.props.isError === true ? 'hidden' : ''}`} id="twitterContainer">
                         <span className="twitter-message" id="twitterMessage">La tarjeta ha sido creada:</span>
                         <a className="card-url" href={this.props.cardUrl} target="_blank"> {this.props.cardUrl}</a>

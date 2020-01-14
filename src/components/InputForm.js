@@ -1,5 +1,6 @@
 import React from 'react';
 import GetAvatar from './GetAvatar';
+import PropTypes from 'prop-types';
 
 class Input extends React.Component {
 
@@ -113,6 +114,16 @@ class Input extends React.Component {
             </fieldset >
         );
     }
+}
+Input.propTypes = {
+    nameCard: PropTypes.string,
+    jobCard: PropTypes.string,
+    phoneCard: PropTypes.number,
+    emailCard: PropTypes.string,
+    linkedinCard: PropTypes.string,
+    githubCard: PropTypes.string,
+    paletteValue: PropTypes.string,
+    fontValue: PropTypes.string,
 }
 
 export default Input;
