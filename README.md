@@ -1,5 +1,6 @@
 **PROYECTO REALIZADO EN REACT-JS**
-💫 ### Awesome Profile Cards - Creación de tarjetas personalizadas  💫
+
+### Awesome Profile Cards - 💫 Creación de tarjetas personalizadas  💫
 
 **DESCRIPCIÓN** 📃
 
