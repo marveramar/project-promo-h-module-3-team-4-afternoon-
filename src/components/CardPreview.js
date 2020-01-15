@@ -76,7 +76,7 @@ const Cardpreview = props => {
 Cardpreview.propTypes = {
     nameCard: PropTypes.string,
     jobCard: PropTypes.string,
-    phoneCard: PropTypes.number,
+    phoneCard: PropTypes.string,
     emailCard: PropTypes.string,
     linkedinCard: PropTypes.string,
     githubCard: PropTypes.string,
