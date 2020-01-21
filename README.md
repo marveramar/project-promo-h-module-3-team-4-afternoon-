@@ -4,8 +4,8 @@
 
 **DESCRIPCIÓN** 📃
 
-La tarea requerida era migrar un proyecto anterior realizado en JavaScript a React. El código era heredado de otro grupo de trabajo, con lo que era un cçodigo desconocido para nosotras a priori.
-La web consiste en una aplicación dibnámica de creación de tarjetas de visita personalizadas.
+La tarea requerida era migrar un proyecto anterior realizado en JavaScript a React. El código era heredado de otro grupo de trabajo, con lo que era un código desconocido para nosotras a priori.
+La web consiste en una aplicación dinámica de creación de tarjetas de visita personalizadas.
 
 + Refactorizar código antiguo.
 + Migrar a React.
